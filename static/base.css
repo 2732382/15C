@@ -1,5 +1,5 @@
 /* Reset some default styling */
-    body, ul {
+body, ul {
     margin: 0;
     padding: 0;
 }
@@ -40,15 +40,24 @@ main {
     flex: 1 0 auto;
 }
 
-#welcome, #explore-groups { margin-bottom : 50px ; }
+.left {
+	margin-left: 50px; /* Adjust as needed */
+	text-align: left;
+}
+
+.right {
+	margin-right: 50px; /* Adjust as needed */
+	text-align: right;
+}
+
+.left, .right { 
+    margin-bottom : 50px ;
+    width: 40%; /* Adjust as needed */
+}
 
 /* New styles */
 main > div {
     display: flex;
-}
-
-#welcome, #explore-groups {
-    width: 50%; /* Adjust as needed */
 }
 
 footer {
@@ -58,4 +67,14 @@ footer {
     padding-top: 10px; /* Adjust as needed */
     padding-right: 50px; /* Adjust as needed */
     border-top: 1px solid black; /* Adjust as needed */
+}
+
+.columns {
+	display: flex;
+	flex-direction: column;
+}
+
+.leftline {
+    text-align: right;
+    border-left: 1px solid black; /* Adjust as needed */
 }

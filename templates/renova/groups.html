@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Renova - Groups</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <!-- Logo -->
+    <div id="logo" class="columns">
+	<img src="{% static 'images/renova.jpg'%}" alt="Logo" />
+    	RENOVA
+    </div> 
+
+    <nav>
+        <ul>
+		<!-- Outside the conditional statements, ALWAYS show -->
+		<li><a href="{% url 'renova:index' %}">Home</a></li>
+	{% if user.is_authenticated %}        	
+		<!-- Show these links when the user is logged in -->
+		<li><a href="{% url 'renova:my_logs' %}">My Logs</a></li>
+        	<li><a href="{% url 'renova:my_account' %}">My Account</a></li>
+		<li><a href="{% url 'renova:logout' %}">Logout</a></li>
+	{% else %}
+		<!-- Show these links when the user is NOT logged in -->
+		<li><a href="{% url 'renova:register' %}">Sign Up</a></li>
+		<li><a href="{% url 'renova:login' %}">Login</a></li>
+	{% endif %}
+		<li><a href="{% url 'renova:groups' %}">Groups</a></li>
+        </ul> 
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+
+<div>
+	<h1>Groups</h1> 
+</div>
+
+<div>
+    <div class="columns">
+        <section class="left">
+            <h2>Explore Groups</h2> 
+            <h3>Most Popular</h3>
+            {% if popular_groups %}
+                <ol>
+                {% for group in popular_groups %}
+                    <li><a href="{% url 'renova:show_group' group.slug %}">{{ group.name }}</a></li>
+                {% endfor %}
+                </ol>
+            {% else %}
+                <strong>There are no groups present.</strong>
+            {% endif %}
+
+            <h3>Recently Added</h3>
+            {% if recent_groups %}
+                <ol>
+                {% for group in recent_groups %}
+                    <li><a href="{% url 'renova:show_group' group.slug %}">{{ group.name }}</a></li>
+                {% endfor %}
+                </ol>
+            {% else %}
+                <strong>There are no new groups present.</strong>
+            {% endif %}
+        <section>
+    </div>
+
+    <section class="right leftline">
+		<h2><a href="{% url 'renova:make_group' %}">Make A Group</a></h2> 
+		<p>{{make_group_summary}}</p>  
+    <section>
+</div>
+
+
+<!-- Footer -->
+<footer>
+	<nav>
+		<ul>
+		<li><a href="{% url 'renova:about_us' %}">About Us</a></li>
+		<li><a href="{% url 'renova:faq' %}">FAQ</a></li>
+		</ul>
+	</nav>
+</footer>
+
+</main>
+
+</body>
+</html>
