@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Renova - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <!-- Logo -->
+    <div id="logo" class="columns">
+	<img src="{% static 'images/renova.jpg'%}" alt="Logo" />
+    	RENOVA
+    </div> 
+
+    <nav>
+        <ul>
+		<!-- Outside the conditional statements, ALWAYS show -->
+		<li><a href="{% url 'renova:index' %}">Home</a></li>
+	{% if user.is_authenticated %}        	
+		<!-- Show these links when the user is logged in -->
+		<li><a href="{% url 'renova:my_logs' %}">My Logs</a></li>
+        	<li><a href="{% url 'renova:my_account' %}">My Account</a></li>
+		<li><a href="{% url 'renova:logout' %}">Logout</a></li>
+	{% else %}
+		<!-- Show these links when the user is NOT logged in -->
+		<li><a href="{% url 'renova:register' %}">Sign Up</a></li>
+		<li><a href="{% url 'renova:login' %}">Login</a></li>
+	{% endif %}
+		<li><a href="{% url 'renova:groups' %}">Groups</a></li>
+        </ul> 
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+
+<div class="login-form columns">
+    <h1>Log in</h1> 
+    <form action="{% url 'renova:login' %}" method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        <input type="submit" value="LOG IN">
+    </form>
+    <p>Don't have an account? <a href="{% url 'renova:register' %}">Sign Up Here</a></p>
+</div>
+
+<!-- Footer -->
+<footer>
+	<nav>
+		<ul>
+		<li><a href="{% url 'renova:about_us' %}">About Us</a></li>
+		<li><a href="{% url 'renova:faq' %}">FAQ</a></li>
+		</ul>
+	</nav>
+</footer>
+
+</main>
+
+</body>
+</html>
