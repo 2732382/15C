@@ -40,6 +40,17 @@ main {
     flex: 1 0 auto;
 }
 
+
+.middle {
+    margin: auto;
+    width: 50%;
+    border: 1px solid lightgrey;
+    padding: 70px 0;
+
+    text-align: center;
+}
+
+
 .left {
 	margin-left: 50px; 
 	text-align: left;
@@ -79,7 +90,7 @@ footer {
 }
 
 
-/* login */
+/* LOGIN */
 .login-form {
     width: 500px;
     margin: 0 auto;
@@ -122,4 +133,40 @@ footer {
 
 .login-form p {
     text-align: center;
+}
+
+/* THE TEAM */
+.team-section {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 0%;
+    padding-right: 20%; 
+}
+
+.team-heading {
+    text-align: center;
+    margin-bottom: 20px;
+	width: 20%;
+}
+
+.team-member {
+    text-align: center;
+    margin: 10px;
+}
+
+.team-member img {
+    width: 100%;
+    height: auto;
+    border-radius: 0%;
+}
+
+.team-member .name {
+    font-weight: bold;
+}
+
+.team-member .position {
+    color: #888;
 }
