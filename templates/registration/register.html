@@ -3,13 +3,19 @@
 {% block title_block %}
 	Register
 {% endblock %}
+
 {% block body_block %}
 	<h1>Register</h1>
 	<form method="post" action=".">
 		{% csrf_token %}
-		{{ user_form.as_p }}
-		{{ profile_form.as_p }}
-		<input type="submit" value="Log In" />
-		<input type="hidden" name="next" value="{{ next }}" />
+		
+		{{ form.as_p }}
+		
+		<input type="submit" value="Register" />
 	</form>
 {% endblock %}
+
+{% block sidebar_block %}
+	<p>Sidebar placeholder</p>
+{% endblock %}
+			

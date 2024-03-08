@@ -7,10 +7,17 @@
 	<h1>Login</h1>
 	<form method="post" action=".">
 		{% csrf_token %}
-		{{ user_form.as_p }}
-		{{ profile_form.as_p }}
+		
+		<!-- Actual form pending -->
+		{{ form.as_p }}
+		
 		<input type="submit" value="Log In" />
 		<input type="hidden" name="next" value="{{ next }}" />
 	</form>
 	<p><a href="{% url 'registration_register' %}">Register here.</a></p>
 {% endblock %}
+{% block sidebar_block %}
+<p>Sidebar placeholder</p>
+{% endblock %}
+			
+

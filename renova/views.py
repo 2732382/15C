@@ -4,7 +4,7 @@ from .models import User, Group
 def index(request):
     return render(request, 'renova/index.html')
 
-def login_view(request):
+def login(request):
 
     return render(request, 'login.html')
 
