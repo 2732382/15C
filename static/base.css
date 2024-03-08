@@ -1,0 +1,125 @@
+/* Reset some default styling */
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+nav ul {
+    list-style-type : none ;
+}
+
+nav ul li {
+    display : inline ;
+    margin : 50px ;
+}
+
+nav ul li a {
+    text-decoration : none ;
+    color : black ;
+}
+
+#logo { font-size : 30px ; }
+
+main { 
+    padding : 20px ;
+    flex: 1 0 auto;
+}
+
+.left {
+	margin-left: 50px; 
+	text-align: left;
+}
+
+.right {
+	margin-right: 50px; 
+	text-align: right;
+}
+
+.left, .right { 
+    margin-bottom : 50px ;
+    width: 40%; 
+}
+
+main > div {
+    display: flex;
+}
+
+footer {
+    flex-shrink: 0;
+    text-align: right;
+    margin-top: 20px; 
+    padding-top: 10px; 
+    padding-right: 50px; 
+    border-top: 1px solid black; 
+}
+
+.columns {
+	display: flex;
+	flex-direction: column;
+}
+
+.leftline {
+    text-align: right;
+    border-left: 1px solid black;
+}
+
+
+/* login */
+.login-form {
+    width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.login-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-top: 25px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-form input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.login-form p {
+    text-align: center;
+}
