@@ -176,3 +176,34 @@ footer {
     color: #888;
 	font-size: 10px;
 }
+
+.about_us-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Contact Info */
+.contact-info {
+    background-color: #f0f0f0; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 15%; 
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Socials */
+.socials {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 15%;
+}
+
+.socials p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
