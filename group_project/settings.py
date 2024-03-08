@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'renova',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -85,10 +86,14 @@ DATABASES = {
     }
 }
 
+# Registration settings
+REGISTRATION_OPEN = True
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = 'renova:index'
+LOGIN_URL = 'auth_login'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
-LOGIN_URL = 'renova:login'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

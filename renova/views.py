@@ -10,7 +10,15 @@ def login_view(request):
 
 def register(request):
 
-    return render(request, 'register.html')
+    user_form = UserForm()
+    profile_form = UserProfileForm()
+
+    context_dict = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+    
+    return render(request, 'registration/register.html', context_dict)
 
 def faq(request):
 
