@@ -9,6 +9,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    /* Add a dark background color */
+    background-color: #000033;
+    /* Use a light color for text */
+    color: #ffffff;
 }
 
 header {
@@ -30,7 +34,8 @@ nav ul li {
 
 nav ul li a {
     text-decoration : none ;
-    color : black ;
+    /* Use a lighter color for links */
+    color : #cccccc ;
 }
 
 #logo { font-size : 30px ; }
@@ -92,6 +97,8 @@ footer {
 
 /* LOGIN */
 .login-form {
+    /* Use a semi-transparent background for contrast */
+    background-color: rgba(255, 255, 255, 0.1);
     width: 500px;
     margin: 0 auto;
     padding: 50px;
@@ -169,12 +176,13 @@ footer {
 
 .team-member .name {
     font-weight: bold;
-	font-size: 12px;
+    /* Use a lighter color for text */
+    color: #ffffff;
 }
 
 .team-member .position {
-    color: #888;
-	font-size: 10px;
+    /* Use a lighter color for text */
+    color: #cccccc;
 }
 
 .about_us-wrapper {
@@ -206,4 +214,10 @@ footer {
 .socials p {
     margin-bottom: 10px;
     font-size: 16px;
+}
+
+
+#delete-account-button {
+    margin-left: auto;
+    display: block;
 }

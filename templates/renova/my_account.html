@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+My Account
+{% endblock %}
+
+{% block content %}
+<div class="login-form columns">
+	<h1>My Account</h1> 
+	<form action="{% url 'renova:register' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username"><br>
+		<label for="email">Email Address:</label>
+		<input type="text" id="email" name="email"><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password"><br>
+		<input type="submit" value="Save Changes">
+		<input type="submit" value="Discard Changes">
+		<input type="submit" value="Delete Account">
+	</form>
+
+    <form action="{% url 'renova:delete_account' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" id="delete-account-button" value="Delete Account">    
+    </form>
+{% endblock %}
