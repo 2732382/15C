@@ -1,42 +1,10 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Renova</title>
-    <link rel="stylesheet" href="../static/base.css">
-</head>
-<body>
 
-<header>
-    <!-- Logo -->
-    <div id="logo" class="columns">
-	<img src="{% static 'images/renova.jpg'%}" alt="Logo" />
-    	RENOVA
-    </div> 
+{% block title %}
+{% endblock %}
 
-    <nav>
-        <ul>
-		<!-- Outside the conditional statements, ALWAYS show -->
-		<li><a href="{% url 'renova:index' %}">Home</a></li>
-	{% if user.is_authenticated %}        	
-		<!-- Show these links when the user is logged in -->
-		<li><a href="{% url 'renova:my_logs' %}">My Logs</a></li>
-        	<li><a href="{% url 'renova:my_account' %}">My Account</a></li>
-		<li><a href="{% url 'renova:logout' %}">Logout</a></li>
-	{% else %}
-		<!-- Show these links when the user is NOT logged in -->
-		<li><a href="{% url 'renova:register' %}">Sign Up</a></li>
-		<li><a href="{% url 'renova:login' %}">Login</a></li>
-	{% endif %}
-		<li><a href="{% url 'renova:groups' %}">Groups</a></li>
-        </ul> 
-    </nav>
-</header>
-
-<!-- Main Content -->
-<main>
-
+{% block content %}
 <div>
 	<section id="welcome">
 		<h1>Welcome to Renova</h1> 
@@ -49,18 +17,4 @@
 		<p>{{group_summary}}</p>  
 	</section>
 </div>
-
-<!-- Footer -->
-<footer>
-	<nav>
-		<ul>
-		<li><a href="{% url 'renova:about_us' %}">About Us</a></li>
-		<li><a href="{% url 'renova:faq' %}">FAQ</a></li>
-		</ul>
-	</nav>
-</footer>
-
-</main>
-
-</body>
-</html>
+{% endblock %}
