@@ -16,7 +16,7 @@ body {
 }
 
 header {
-    background-color: #f0f0f0;
+    background-color: #27075b; /* Midnight color */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -34,8 +34,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration : none ;
-    /* Use a lighter color for links */
-    color : #cccccc ;
+    color : #cccccc ; /* Light color for contrast */
 }
 
 #logo { font-size : 30px ; }
@@ -82,6 +81,8 @@ footer {
     padding-top: 10px; 
     padding-right: 50px; 
     border-top: 1px solid black; 
+    background-color: #000000; /* Black color */
+    color: #ffffff; /* White color for contrast */
 }
 
 .columns {
