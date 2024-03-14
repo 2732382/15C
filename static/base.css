@@ -199,6 +199,10 @@ footer {
     width: 15%; 
 }
 
+.contact-info h2{
+    color:#000033;
+}
+
 .contact-info p {
     margin-bottom: 10px;
     font-size: 16px;
@@ -215,6 +219,10 @@ footer {
 .socials p {
     margin-bottom: 10px;
     font-size: 16px;
+}
+
+.socials h2{
+    color:#000033;
 }
 
 
