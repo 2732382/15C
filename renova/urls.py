@@ -5,8 +5,6 @@ app_name = "renova"
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('login/', views.login, name='login'),
-    path('register/', views.register, name='register'),
     path('faq/', views.faq, name='faq'),
     path('about-us/', views.about_us, name='about_us'),
     path('my-logs/', views.my_logs, name='my_logs'),

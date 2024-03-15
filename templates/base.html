@@ -25,11 +25,11 @@
 		<!-- Show these links when the user is logged in -->
 		<li><a href="{% url 'renova:my_logs' %}">My Logs</a></li>
         	<li><a href="{% url 'renova:my_account' %}">My Account</a></li>
-		<li><a href="{% url 'renova:logout' %}">Logout</a></li>
+		<li><a href="{% url 'auth_logout' %}">Logout</a></li>
 	{% else %}
 		<!-- Show these links when the user is NOT logged in -->
-		<li><a href="{% url 'renova:register' %}">Sign Up</a></li>
-		<li><a href="{% url 'renova:login' %}">Login</a></li>
+		<li><a href="{% url 'registration_register' %}">Sign Up</a></li>
+		<li><a href="{% url 'auth_login' %}">Login</a></li>
 	{% endif %}
 		<li><a href="{% url 'renova:groups' %}">Groups</a></li>
         </ul> 
