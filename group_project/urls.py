@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 from renova import views
 
-from registration.backends.simple.view import RegistrationView#
+from registration.backends.simple.views import RegistrationView#
 
 class MyRegistrationView(RegistrationView):
     def get_success_url(self, request, user):
