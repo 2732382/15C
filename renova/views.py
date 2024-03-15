@@ -4,19 +4,6 @@ from .models import User, Group
 def index(request):
     return render(request, 'renova/index.html')
 
-def login(request):
-    return render(request, 'registration/login.html')
-
-def register(request):
-    user_form = UserForm()
-    profile_form = UserProfileForm()
-
-    context_dict = {
-        'user_form': user_form,
-        'profile_form': profile_form
-    }
-    return render(request, 'registration/register.html', context_dict)
-
 def faq(request):
     return render(request, 'renova/faq.html')
 
