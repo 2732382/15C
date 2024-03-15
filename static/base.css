@@ -230,3 +230,53 @@ footer {
     margin-left: auto;
     display: block;
 }
+
+
+/* MyLogs */
+.my_logs {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: white;
+    }
+
+    .dial {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 50px;
+        position: relative;
+        background: lightgrey;
+    }
+
+    .dial::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    #dial1 {
+        background: conic-gradient(red 0%, red 50%, transparent 50%, transparent 50%, lightgrey 50%); 
+    }
+
+    #dial2 {
+        background: conic-gradient(aqua 0%, aqua 25%, transparent 25%, transparent 25%, lightgrey 25%); 
+    }
+
+    #dial3 {
+        background: conic-gradient(purple 0%, purple 75%, transparent 75%, transparent 75%, lightgrey 75%);
+    }
+
+    #dial4 {
+        background: conic-gradient(orange 0%, orange 100%, transparent 100%, transparent 100%, lightgrey 100%);
+    }
+}

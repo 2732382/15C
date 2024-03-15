@@ -36,7 +36,7 @@ def groups(request):
     return render(request, 'renova/groups.html')
 
 def group_detail(request, group_name_slug):
-    return render(request, 'group_detail.html', {'group_name_slug': group_name_slug})
+    return render(request, 'renova/group_detail.html', {'group_name_slug': group_name_slug})
 
 def make_group(request):
     return render(request, 'renova/make_group.html')
