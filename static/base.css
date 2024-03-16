@@ -123,8 +123,8 @@ footer {
     margin-top: 20px; 
     padding-top: 10px; 
     padding-right: 50px; 
-    border-top: 1px solid #FDFFFC; 
-    background-color: #011627; /* Black color */
+    border-top: 1px solid #ffffff; 
+    background-color: #090313; /* Black color */
     color: #ffffff; /* White color for contrast */
 }
 
@@ -156,13 +156,15 @@ footer {
 }
 
 .login-form label {
+    text-align: left;
     display: block;
     margin-top: 25px;
 }
 
 .login-form input[type="text"],
 .login-form input[type="password"],
-.login-form input[type="submit"] {
+.login-form input[type="submit"],
+.login-form input[type="email"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -184,6 +186,12 @@ footer {
 
 .login-form p {
     text-align: center;
+}
+
+.login-form ul {
+    font-size: 12px;
+    margin-left: 5%;
+    color:rgb(233, 190, 125)
 }
 
 /* THE TEAM */
