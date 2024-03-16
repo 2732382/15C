@@ -10,13 +10,13 @@ body {
     flex-direction: column;
     min-height: 100vh;
     /* Add a dark background color */
-    background-color: #000033;
+    background: linear-gradient(to top, #1a0033, #011627);
     /* Use a light color for text */
     color: #FDFFFC;
 }
 
 header {
-    background: linear-gradient(to right, #230425, #4c008a); /* Gradient from midnight color to bright pink */
+    background: linear-gradient(to right, #37043b, #4c008a);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -59,11 +59,12 @@ nav ul li a {
     display: block;
     width: 135%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    background: 
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
     border-radius: 50%;
     position: absolute;
     top: -10%;
-    left: -15%;
+    left: -16%;
     z-index: 3;
 }
 
@@ -128,7 +129,7 @@ footer {
 
 .leftline {
     text-align: right;
-    border-left: 1px solid black;
+    border-left: 1px solid #FDFFFC;
 }
 
 
@@ -270,49 +271,54 @@ footer {
 
 /* MyLogs */
 .my_logs {
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background: white;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .dial {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 50px;
-        position: relative;
-        background: lightgrey;
-    }
+.dial {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 5%; /* Adjusted margin for spacing */
+    position: relative;
+    background: lightgrey;
+    color: #011627;
+}
 
-    .dial::before {
-        content: "";
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: white;
-    }
+.dial::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ffffff;
+}
 
-    #dial1 {
-        background: conic-gradient(red 0%, red 50%, transparent 50%, transparent 50%, lightgrey 50%); 
-    }
+.dial-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 14px; /* Adjust as needed */
+}
 
-    #dial2 {
-        background: conic-gradient(aqua 0%, aqua 25%, transparent 25%, transparent 25%, lightgrey 25%); 
-    }
+/* Individual dial backgrounds */
+#dial1 {
+    background: conic-gradient(red 0%, rgb(255, 123, 0) 50%, transparent 50%, transparent 0%, lightgrey 100%);
+}
 
-    #dial3 {
-        background: conic-gradient(purple 0%, purple 75%, transparent 75%, transparent 75%, lightgrey 75%);
-    }
+#dial2 {
+    background: conic-gradient(aqua 0%, rgb(0, 255, 200) 25%, transparent 25%, transparent 0%, lightgrey 100%);
+}
 
-    #dial4 {
-        background: conic-gradient(orange 0%, orange 100%, transparent 100%, transparent 100%, lightgrey 100%);
-    }
+#dial3 {
+    background: conic-gradient(rgb(36, 0, 119) 0%, rgb(204, 0, 255) 75%, transparent 75%, transparent 0%, lightgrey 100%);
+}
+
+#dial4 {
+    background: conic-gradient(rgb(255, 166, 0) 0%, rgb(236, 228, 109) 100%, transparent 100%, transparent 0%, lightgrey 100%);
 }
