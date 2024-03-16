@@ -6,14 +6,14 @@ Home
 {% endblock %}
 
 {% block content %}
-<div>
-	<section id="welcome">
+<div class="container">
+	<section id="welcome" class="left">
 		<h1>Welcome to Renova</h1> 
 		<p>{{summary}}</p> 
 		<a href="{% url 'registration_register' %}">Get Started!</a>
 	</section>
 
-	<section id="explore-groups"> 
+	<section id="explore-groups" class="right"> 
 		<h2><a href="{% url 'renova:groups' %}">Explore Groups</a></h2> 
 		<p>{{group_summary}}</p>  
 	</section>

@@ -84,27 +84,33 @@ main {
 
 .middle {
     margin: auto;
+    margin-bottom: 2%;
     width: 50%;
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(132, 86, 192);
     padding: 70px 0;
     border-radius: 10px;
     text-align: center;
+    background-color: rgb(51, 38, 80);
 }
 
 
 .left {
-	margin-left: 50px; 
 	text-align: left;
+    margin-left: 50px;
 }
 
 .right {
-	margin-right: 50px; 
-	text-align: right;
+    text-align: right;
+    margin-right: 50px;
 }
 
-.left, .right { 
-    margin-bottom : 50px ;
-    width: 40%; 
+.container {
+    display: flex;
+    justify-content: space-between; /* This will distribute the items evenly across the row */
+}
+
+.left, .right {
+    width: 20%; /* Adjust as needed */
 }
 
 main > div {
@@ -311,7 +317,7 @@ footer {
 .dial-label {
     margin-bottom: 10px; /* Adjust as needed */
     text-align: center;
-    font-size: 16px; /* Adjust as needed */
+    font-size: 14px; /* Adjust as needed */
 }
 
 .dial::before {
@@ -359,5 +365,24 @@ footer {
 }
 
 #dial5 {
-    background: conic-gradient(rgb(0, 143, 83) 0%, rgb(0, 255, 136) 100%, transparent 100%, transparent 0%, lightgrey 100%);
+    background: conic-gradient(rgb(0, 143, 83) 0%, rgb(0, 255, 136) 78%, transparent 78%, transparent 0%, lightgrey 100%);
 }
+
+.activity-log {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px; 
+    height: 50px; 
+    margin: 5px auto; 
+    padding: 0 10%; 
+    border: 3px solid lightgrey;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.activity-name, .activity-duration {
+    font-size: 16px; 
+    color: #011627;
+}
+
