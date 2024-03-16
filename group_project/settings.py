@@ -89,6 +89,7 @@ DATABASES = {
 # Registration settings
 REGISTRATION_OPEN = True
 REGISTRATION_AUTO_LOGIN = True
+SIMPLE_BACKEND_REDIRECT_URL = 'renova:index'
 LOGIN_REDIRECT_URL = 'renova:index'
 LOGIN_URL = '/accounts/login/'
 

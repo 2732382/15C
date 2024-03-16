@@ -21,16 +21,9 @@ from django.conf.urls.static import static
 
 from renova import views
 
-from registration.backends.simple.views import RegistrationView#
-
-class MyRegistrationView(RegistrationView):
-    def get_success_url(self, request, user):
-        return '/renova/'
-
 urlpatterns = [
     path('', views.index, name='index.html'),
     path('accounts/', include('registration.backends.simple.urls')),
-    path('accounts/register', MyRegistrationView.as_view(), name='registration_register'),
     path('admin/', admin.site.urls),
     path('renova/', include('renova.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
