@@ -37,7 +37,17 @@ nav ul li a {
     color : #cccccc ; /* Light color for contrast */
 }
 
-#logo { font-size : 30px ; }
+#logo { 
+    font-size : 1.2vw; 
+    width: 5%;
+    height: 5%;
+}
+
+#logo img {
+    background-color: white;
+    border-radius: 50%;
+    padding: 5%;
+}
 
 main { 
     padding : 20px ;
