@@ -12,42 +12,68 @@ body {
     /* Add a dark background color */
     background-color: #000033;
     /* Use a light color for text */
-    color: #ffffff;
+    color: #FDFFFC;
 }
 
 header {
-    background-color: #27075b; /* Midnight color */
+    background: linear-gradient(to right, #230425, #4c008a); /* Gradient from midnight color to bright pink */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center; 
+    z-index: 1;
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 nav ul {
-    list-style-type : none ;
+    list-style-type: none;
+    font-size: 1.5vw; /* Adjust as needed */
 }
 
 nav ul li {
-    display : inline ;
-    margin : 50px ;
+    display: inline;
+    margin: 5vw; /* Adjust as needed */
 }
 
 nav ul li a {
-    text-decoration : none ;
-    color : #cccccc ; /* Light color for contrast */
+    text-decoration: none;
+    color: #FDFFFC; /* Light color for contrast */
+    font-family: 'Roboto', sans-serif;
 }
+
 
 #logo { 
     font-size : 1.2vw; 
     width: 5%;
     height: 5%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+#logo::after {
+    content: "";
+    display: block;
+    width: 135%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    border-radius: 50%;
+    position: absolute;
+    top: -10%;
+    left: -15%;
+    z-index: 3;
 }
 
 #logo img {
-    background-color: white;
+    background-color: #FDFFFC;
     border-radius: 50%;
     padding: 5%;
+    z-index: 4;
 }
+
 
 main { 
     padding : 20px ;
@@ -90,8 +116,8 @@ footer {
     margin-top: 20px; 
     padding-top: 10px; 
     padding-right: 50px; 
-    border-top: 1px solid black; 
-    background-color: #000000; /* Black color */
+    border-top: 1px solid #FDFFFC; 
+    background-color: #011627; /* Black color */
     color: #ffffff; /* White color for contrast */
 }
 
