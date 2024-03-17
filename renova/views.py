@@ -2,7 +2,20 @@ from django.shortcuts import render
 from .models import User, Group 
 
 def index(request):
-    return render(request, 'renova/index.html')
+    context_dict = {}
+    context_dict['summary'] = """Welcome to Renova, your personal haven for holistic wellbeing tracking and community engagement.
+    Seamlessly log and monitor your daily activities, calories, hydration, and sleep.
+    Dive into Groups where users share activity guides, fostering a supportive community.
+    Renova empowers you to achieve optimal health.
+    With personalized daily milestones, hit your targeted goals and dream physique.
+    Receive activity recommendations aligned with your objectives and engage 
+    with others through Groups and interact with likes and comments."""
+    # Replace newlines with <br>
+    context_dict['summary'] = context_dict['summary'].replace('\n', '<br />')
+
+    context_dict['group_summary'] = "placeholder (group summary)"
+    return render(request, 'renova/index.html', context=context_dict)
+
 
 def faq(request):
     return render(request, 'renova/faq.html')

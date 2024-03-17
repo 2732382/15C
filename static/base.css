@@ -93,15 +93,18 @@ main {
     background-color: rgb(51, 38, 80);
 }
 
-
-.left {
-	text-align: left;
-    margin-left: 50px;
+.leftalign {
+	float: left;
+    margin-left: 150px;
 }
 
-.right {
-    text-align: right;
-    margin-right: 50px;
+.rightalign {
+    float: right;
+    margin-right: 150px;
+}
+
+#explore-groups {
+    margin-right: 500px;
 }
 
 .container {
@@ -110,7 +113,7 @@ main {
 }
 
 .left, .right {
-    width: 20%; /* Adjust as needed */
+    width: 20%; 
 }
 
 main > div {
