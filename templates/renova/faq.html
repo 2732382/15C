@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+FAQ
+{% endblock %}
+
+{% block content %}
+<div class="middle columns">
+	<h1>FAQ</h1> 
+
+    <div>
+        <h2>What can we help you find?</h2>
+    </div>
+
+    <div>JQUERY DROPBOX PLACEHOLDER</div>
+</div>
+
+<div class="leftalign columns">
+    <h2>Popular Questions</h2>
+    {% if popular_questions %}
+        <ol>
+        {% for question in popular_questions %}
+            <li>{{ question }}</li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <strong>There are no questions present.</strong>
+    {% endif %}
+</div>
+
+<div class="rightalign columns">
+    <h2>Can't find what you're looking for?</h2>
+    <p>Contact us, through the contact information provided in our 'About Us' page</p>
+    <a href="{% url 'renova:about_us' %}">About Us</a>
+</div>
+
+{% endblock %}
