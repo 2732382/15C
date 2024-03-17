@@ -1,5 +1,7 @@
+from datetime import timezone
 from django.shortcuts import render, redirect
 from .models import User, Group 
+from .forms import LogForm, ActivityForm
 
 def index(request):
     context_dict = {}
@@ -30,7 +32,35 @@ def my_logs(request):
 
 
 def record_log(request):
-    return render(request, 'renova/record_log.html')
+
+    if request.method == 'POST':
+        log_form = LogForm(request.POST)
+        activity_form = ActivityForm(request.POST)
+        
+        if log_form.is_valid():
+            log = log_form.save(commit=False)
+            log.user = request.user 
+            log.creation_date = timezone.now()  # Set the creation date to the current date
+            log.save()
+
+            # Check if any fields in the activity form are filled out
+            if any(value for value in activity_form.data.values()):
+                # If any fields are filled out, validate all fields
+                if activity_form.is_valid():
+                    activity = activity_form.save(commit=False)
+                    activity.log = log
+                    activity.save()
+                    log.total_duration += activity.duration  # Add the duration of the activity to the total duration
+                    log.save()
+                else:
+                    # If the form is not valid, return an error
+                    return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form, 'error': 'All fields in the activity form must be filled out.'})
+            return redirect('my_logs')
+    else:
+        log_form = LogForm()
+        activity_form = ActivityForm()
+
+    return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
 
 
 def my_account(request):
