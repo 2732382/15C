@@ -10,9 +10,9 @@ Groups
 	<h1>Groups</h1> 
 </div>
 
-<div>
+<div class="container">
     <div class="columns">
-        <section class="left">
+        <section class="leftalign">
             <h2>Explore Groups</h2> 
             <h3>Most Popular</h3>
             {% if popular_groups %}
@@ -38,9 +38,9 @@ Groups
         <section>
     </div>
 
-    <section class="right leftline">
+    <section id="explore-groups" class="rightalign leftline">
 		<h2><a href="{% url 'renova:make_group' %}">Make A Group</a></h2> 
-		<p>{{make_group_summary}}</p>  
+		<p>{{ make_group_summary }}</p>  
     <section>
 </div>
 {% endblock %}

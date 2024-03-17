@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import User, Group 
 
 def index(request):
@@ -20,23 +20,35 @@ def index(request):
 def faq(request):
     return render(request, 'renova/faq.html')
 
+
 def about_us(request):
     return render(request, 'renova/about_us.html')
+
 
 def my_logs(request):
     return render(request, 'renova/my_logs.html')
 
+
 def record_log(request):
     return render(request, 'renova/record_log.html')
+
 
 def my_account(request):
     return render(request, 'renova/my_account.html')
 
-def groups(request):
-    return render(request, 'renova/groups.html')
 
-def group_detail(request, group_name_slug):
-    return render(request, 'renova/group_detail.html', {'group_name_slug': group_name_slug})
+def groups(request):
+    popular_groups_list = Group.objects.order_by('members')[:5]
+    newest_groups_list = Group.objects.order_by('date')[:5]
+
+    context_dict = {}
+    context_dict['make_group_summary'] = "placeholder (make-group summary)"
+    return render(request, 'renova/groups.html', context=context_dict)
+
+
+def group(request, group_name_slug):
+    return render(request, 'renova/groups/group.html', {'group_name_slug': group_name_slug})
+
 
 def make_group(request):
-    return render(request, 'renova/make_group.html')
+    return render(request, 'renova/groups/make_group.html')

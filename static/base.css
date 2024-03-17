@@ -101,6 +101,7 @@ main {
 .rightalign {
     float: right;
     margin-right: 150px;
+    padding-left: 100px;
 }
 
 #explore-groups {

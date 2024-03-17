@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+Make Group
+{% endblock %}
+
+{% block content %}
+<div class="login-form">
+    <h1>Make Group</h1> 
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Group</button>
+    </form>
+</div>
+{% endblock %}

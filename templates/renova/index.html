@@ -7,13 +7,13 @@ Home
 
 {% block content %}
 <div class="container">
-	<div class="leftalign">
+	<div class="leftalign columns">
 		<h1>Welcome to Renova</h1> 
 		<p>{{ summary|safe  }}</p> 
 		<a href="{% url 'registration_register' %}">Get Started!</a>
 	</div>
 
-	<div id="explore-groups" class="rightalign columns"> 
+	<div id="explore-groups" class="rightalign leftline columns"> 
 		<h2><a href="{% url 'renova:groups' %}">Explore Groups</a></h2> 
 		<p>{{ group_summary }}</p>  
 	</div>
