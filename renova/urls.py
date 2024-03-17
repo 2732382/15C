@@ -11,6 +11,6 @@ urlpatterns = [
     path('my-logs/record-log/', views.record_log, name='record_log'),
     path('my-account/', views.my_account, name='my_account'),
     path('groups/', views.groups, name='groups'),
-    path('groups/<slug:group_name_slug>/', views.group, name='group'),
     path('groups/make-group/', views.make_group, name='make_group'),
+    path('groups/<slug:group_name_slug>/', views.group, name='group'),
 ]

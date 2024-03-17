@@ -1,6 +1,6 @@
 #It's platonic in here
 from django import forms
-from renova.models import User, UserProfile, Group, Log, Log, Activity
+from renova.models import User, UserProfile, Group, Log, Activity
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

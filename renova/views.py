@@ -1,7 +1,7 @@
 from datetime import timezone
 from django.shortcuts import render, redirect
 from .models import User, Group 
-from .forms import LogForm, ActivityForm
+from .forms import GroupForm, LogForm, ActivityForm
 
 def index(request):
     context_dict = {}
@@ -36,7 +36,7 @@ def record_log(request):
     if request.method == 'POST':
         log_form = LogForm(request.POST)
         activity_form = ActivityForm(request.POST)
-        
+
         if log_form.is_valid():
             log = log_form.save(commit=False)
             log.user = request.user 
@@ -54,7 +54,8 @@ def record_log(request):
                     log.save()
                 else:
                     # If the form is not valid, return an error
-                    return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form, 'error': 'All fields in the activity form must be filled out.'})
+                    return render(request, 'renova/record_log.html', 
+                                  {'log_form': log_form, 'activity_form': activity_form, 'error': 'All fields in the activity form must be filled out.'})
             return redirect('my_logs')
     else:
         log_form = LogForm()
@@ -77,8 +78,10 @@ def groups(request):
 
 
 def group(request, group_name_slug):
-    return render(request, 'renova/groups/group.html', {'group_name_slug': group_name_slug})
+    return render(request, 'renova/group.html', {'group_name_slug': group_name_slug})
 
 
 def make_group(request):
-    return render(request, 'renova/groups/make_group.html')
+    form = GroupForm()
+    return render(request, 'renova/make_group.html', {'form': form})
+ 
