@@ -15,6 +15,7 @@ class UserProfile(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=255, unique=True)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    members = models.ManyToManyField(User, related_name='member_groups', blank=True)
     creation_date = models.DateField(default=timezone.now)
     icon = models.ImageField(upload_to='group_icons', blank=True)
     activities = models.CharField(max_length=255, blank=True)
@@ -23,9 +24,11 @@ class Group(models.Model):
     slug = models.SlugField(unique = True)
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.name)
-        super(Group, self).save(*args, **kwargs)
+        if not self.id:  # Only execute this code if the instance is being created, not updated
+            # Add the admin user to the members field
+            self.members.add(self.admin)
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

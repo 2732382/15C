@@ -13,4 +13,6 @@ urlpatterns = [
     path('groups/', views.groups, name='groups'),
     path('groups/make-group/', views.make_group, name='make_group'),
     path('groups/<slug:group_name_slug>/', views.group, name='group'),
+    path('groups/<slug:group_name_slug>/leave', views.leave_group, name='leave_group'),
+    path('groups/<slug:group_name_slug>/join', views.join_group, name='join_group'),
 ]

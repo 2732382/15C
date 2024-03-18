@@ -11,34 +11,48 @@
 
 {% block content %}
     {% if group %}
-    <div class="container">
-        <div class="columns">
-            <div id="group-logo">
-                <img src="{{ group.icon.url }}" alt="{{ group.name }} Icon">
-                <h1>{{ group.name }}</h1>
+        <div class="container">
+            <div class="columns">
+                <div id="group-logo">
+                    <img src="{{ group.icon.url }}" alt="{{ group.name }} Icon">
+                    <h1>{{ group.name }}</h1>
+                </div>
+
+                <div id="group-description">
+                    <p>{{ group.description }}</p>
+                </div>
+
+                <div id="group-announcements">
+                    <h2>Announcements</h2>
+                    <p>{{ group.announcements }}</p>
+                </div>
             </div>
 
-            <div id="group-description"><p>{{ group.description }}</p></div>
+            <div class="comment-section rightalign leftline">
+                <div class="leftalign">Comments</div>
+                {% for comment in group.comments.all %}
+                    <p>{{ comment.text }} - {{ comment.user.username }}</p>
+                {% endfor %}
 
-            <div id="group-announcements">
-                <h2>Announcements</h2>
-                <p>{{ group.announcements }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Post comment</button>
+                </form>
             </div>
-        </div>
 
-        <div class="comment-section rightalign leftline">
-            <div class="leftalign">Comments</div>
-            {% for comment in group.comments.all %}
-                <p>{{ comment.text }} - {{ comment.user.username }}</p>
-            {% endfor %}
-
-            <form method="post">
+            {% if request.user in group.members.all %}
+            <form method="post" action="{% url 'renova:leave_group' group.slug %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Post comment</button>
+                <button type="submit">Leave Group</button>
             </form>
+            {% else %}
+                <form method="post" action="{% url 'renova:join_group' group.slug %}">
+                    {% csrf_token %}
+                    <button type="submit">Join Group</button>
+                </form>
+            {% endif %}
         </div>
-    </div>
 
     {% else %}
         <p>Group not found.</p>

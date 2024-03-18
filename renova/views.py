@@ -113,6 +113,7 @@ def groups(request):
     context_dict['make_group_summary'] = "placeholder (make-group summary)"
     return render(request, 'renova/groups.html', context=context_dict)
 
+
 @login_required
 def group(request, group_name_slug=None):
     context_dict = {}
@@ -160,3 +161,23 @@ def make_group(request):
     else:
         form = GroupForm()
     return render(request, 'renova/make_group.html', {'form': form})
+
+
+@login_required
+def leave_group(request, group_name_slug):
+    try:
+        group = Group.objects.get(slug=group_name_slug)
+        group.members.remove(request.user)
+        return redirect(reverse('renova:group', kwargs={'group_name_slug': group.slug}))
+    except Group.DoesNotExist:
+        return HttpResponse("Group not found")
+    
+
+@login_required
+def join_group(request, group_name_slug):
+    try:
+        group = Group.objects.get(slug=group_name_slug)
+        group.members.add(request.user)
+        return redirect(reverse('renova:group', kwargs={'group_name_slug': group.slug}))
+    except Group.DoesNotExist:
+        return HttpResponse("Group not found")
