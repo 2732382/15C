@@ -93,6 +93,11 @@ main {
     background-color: rgb(51, 38, 80);
 }
 
+.middle p {
+    text-align: left;
+    padding: 25px;
+}
+
 .leftalign {
 	float: left;
     margin-left: 150px;
@@ -261,6 +266,7 @@ footer {
 .contact-info p {
     margin-bottom: 10px;
     font-size: 16px;
+    color: #011627;
 }
 
 /* Socials */
@@ -274,6 +280,7 @@ footer {
 .socials p {
     margin-bottom: 10px;
     font-size: 16px;
+    color: #011627;
 }
 
 .socials h2{
@@ -286,6 +293,10 @@ footer {
     display: block;
 }
 
+#contact-socials {
+    color:#011627;
+    margin-left: 50px;
+}
 
 /* MyLogs */
 .my_logs {

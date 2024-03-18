@@ -24,7 +24,37 @@ def faq(request):
 
 
 def about_us(request):
-    return render(request, 'renova/about_us.html')
+    context_dict = {}
+
+    context_dict['mission_summary'] = """At Renova, our mission is to empower individuals to take control of their health and wellbeing. 
+    We believe that optimal health is a holistic endeavor, encompassing not just physical fitness, but also mental and emotional wellbeing.
+    We aim to provide a platform where users can seamlessly log and monitor their daily activities, calories, hydration, and sleep. 
+
+    Our personalized daily milestones are designed to help users achieve their targeted goals and desired physique.
+    But we're not just about individual health. We understand the power of community in promoting wellbeing. 
+    That's why we've created Groups, a space where users can share activity guides and support each other on their health journeys.
+
+    We're also committed to providing tools for users to visualize their overall wellbeing through a holistic scoring system. 
+    This allows users to track their progress and see the impact of their efforts in real-time.
+    In addition, we recognize the importance of adaptability in health and fitness. 
+    That's why we offer activity recommendations that align with users' objectives, whether they're looking to lose weight, gain weight, or maintain their current physique.
+    
+    At Renova, we're not just building a platform, we're building a community. 
+    A community that supports, encourages, and empowers each other to achieve optimal health. 
+    Join us on this journey to holistic wellbeing. Together, we can achieve more."""
+    # Replace newlines with <br>
+    context_dict['mission_summary'] = context_dict['mission_summary'].replace('\n', '<br />')
+
+    context_dict['enquiries_email'] = "enquiries@renova.com"
+    context_dict['partnerships_email'] = "partnerships@renova.com"
+    context_dict['phone_number'] = "+44 7123456789"
+
+    context_dict['youtube'] = "youtube.com/renova"
+    context_dict['facebook'] = "facebook.com/renova"
+    context_dict['instagram'] = "instagram.com/renova"
+    context_dict['twitter'] = "twitter.com/renova"
+
+    return render(request, 'renova/about_us.html', context=context_dict)
 
 
 def my_logs(request):
