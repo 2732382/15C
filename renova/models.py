@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -11,13 +12,14 @@ class UserProfile(models.Model):
 
 
 class Group(models.Model):
-    name = models.CharField(max_length=255, primary_key=True)
-    admin = models.ForeignKey(User, on_delete=models.CASCADE)
-    creation_date = models.DateField()
+    name = models.CharField(max_length=255, unique=True)
+    admin = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    creation_date = models.DateField(default=timezone.now)
     icon = models.ImageField(upload_to='group_icons', blank=True)
     activities = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
     announcements = models.TextField(blank=True)
+    slug = models.SlugField(unique = True)
 
     def __str__(self):
         return self.name
@@ -34,9 +36,9 @@ class Activity(models.Model):
     def __str__(self):
         return self.name
 
+
 class Log(models.Model):
-    id = models.IntegerField(primary_key=True)
-    creation_date = models.DateField()
+    creation_date = models.DateField(default=timezone.now)
     activities = models.ManyToManyField(Activity)
     total_duration = models.IntegerField(default=0)
     water = models.IntegerField(default=0)
@@ -44,4 +46,4 @@ class Log(models.Model):
     sleep = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.id
+        return str(self.pk)

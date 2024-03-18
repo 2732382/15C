@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
-from datetime import timezone
+from django.utils import timezone
 from django.shortcuts import render, redirect
 from .models import User, Group 
 from .forms import GroupForm, LogForm, ActivityForm
+from django.urls import reverse
+from django.http import HttpResponse
 
 def index(request):
     context_dict = {}
@@ -58,10 +60,12 @@ def about_us(request):
     return render(request, 'renova/about_us.html', context=context_dict)
 
 
+@login_required
 def my_logs(request):
     return render(request, 'renova/my_logs.html')
 
 
+@login_required
 def record_log(request):
 
     if request.method == 'POST':
@@ -87,7 +91,7 @@ def record_log(request):
                     # If the form is not valid, return an error
                     return render(request, 'renova/record_log.html', 
                                   {'log_form': log_form, 'activity_form': activity_form, 'error': 'All fields in the activity form must be filled out.'})
-            return redirect('my_logs')
+            return redirect(reverse('my_logs'))
     else:
         log_form = LogForm()
         activity_form = ActivityForm()
@@ -95,6 +99,7 @@ def record_log(request):
     return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
 
 
+@login_required
 def my_account(request):
     return render(request, 'renova/my_account.html')
 
@@ -108,11 +113,34 @@ def groups(request):
     return render(request, 'renova/groups.html', context=context_dict)
 
 
-def group(request, group_name_slug):
-    return render(request, 'renova/group.html', {'group_name_slug': group_name_slug})
+def group(request, group_name_slug=None):
+    context_dict = {}
+    
+    try:
+        group = Group.objects.get(slug=group_name_slug)
+        context_dict['group'] = group
+
+    except Group.DoesNotExist:
+        context_dict['group'] = None
+
+    if group_name_slug:
+        return render(request, 'renova/group.html', context_dict)
+    else:
+        # Handle the case where group_name_slug is not provided
+        return HttpResponse("Group not found")
+
+
 
 @login_required
 def make_group(request):
-    form = GroupForm()
+    if request.method == 'POST':
+        form = GroupForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_group = form.save(commit=False)
+            new_group.admin = request.user
+            new_group.creation_date = timezone.now()
+            new_group.save()
+            return redirect(reverse('group', kwargs={'group_name_slug': new_group.name}))
+    else:
+        form = GroupForm()
     return render(request, 'renova/make_group.html', {'form': form})
- 

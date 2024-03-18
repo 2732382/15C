@@ -2,9 +2,12 @@
 {% load staticfiles %}
 
 {% block title %}
-Home
+	{% if group %}
+		{{ group.name }}
+	{% else %}
+		Unknown Group
+	{% endif %}
 {% endblock %}
 
 {% block content %}
-PLACEHOLDER CONTENT
 {% endblock %}
