@@ -467,3 +467,48 @@ footer {
     order: 3;
     align-self: flex-end;
 }
+
+
+/* GROUP pages */
+
+/* group logo */
+#group-logo {
+    margin: 50px;
+    font-size : 14px; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#group-logo img {
+    height: 100px;
+    width: 100px;
+}
+
+/* group description */
+#group-description {
+    background-color: #212138;
+    width: 500px;
+    padding: 20px;
+    margin: 50px;
+    border-radius: 5px;
+    border: 1px solid #313153;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* group announcements */
+#group-announcements {
+    width: 500px;
+    background-color: #fdeed8;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #333;
+    margin: 0 50px;
+}

@@ -1,6 +1,7 @@
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
+from django.template.defaultfilters import slugify
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -20,6 +21,11 @@ class Group(models.Model):
     description = models.TextField(blank=True)
     announcements = models.TextField(blank=True)
     slug = models.SlugField(unique = True)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.name)
+        super(Group, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

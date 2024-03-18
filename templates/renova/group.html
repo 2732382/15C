@@ -1,13 +1,35 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title %}
-	{% if group %}
-		{{ group.name }}
-	{% else %}
-		Unknown Group
-	{% endif %}
+    {% if group %}
+        {{ group.name }}
+    {% else %}
+        Unknown Group
+    {% endif %}
 {% endblock %}
 
 {% block content %}
+    {% if group %}
+    <div class="container">
+        <div class="columns">
+            <div id="group-logo">
+                <img src="{{ group.icon.url }}" alt="{{ group.name }} Icon">
+                <h1>{{ group.name }}</h1>
+            </div>
+
+            <div id="group-description"><p>{{ group.description }}</p></div>
+            
+            <div id="group-announcements">
+                <h2>Announcements</h2>
+                <p>{{ group.announcements }}</p>
+            </div>
+        </div>
+
+        <div class="comment-section rightalign leftline">Comments</div>
+    </div>
+
+    {% else %}
+        <p>Group not found.</p>
+    {% endif %}
 {% endblock %}

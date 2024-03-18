@@ -5,6 +5,7 @@ from .models import User, Group
 from .forms import GroupForm, LogForm, ActivityForm
 from django.urls import reverse
 from django.http import HttpResponse
+from django.contrib import messages
 
 def index(request):
     context_dict = {}
@@ -106,7 +107,7 @@ def my_account(request):
 
 def groups(request):
     popular_groups_list = Group.objects.order_by('members')[:5]
-    newest_groups_list = Group.objects.order_by('date')[:5]
+    newest_groups_list = Group.objects.order_by('creation_date')[:5]
 
     context_dict = {}
     context_dict['make_group_summary'] = "placeholder (make-group summary)"
@@ -137,10 +138,16 @@ def make_group(request):
         form = GroupForm(request.POST, request.FILES)
         if form.is_valid():
             new_group = form.save(commit=False)
-            new_group.admin = request.user
-            new_group.creation_date = timezone.now()
-            new_group.save()
-            return redirect(reverse('group', kwargs={'group_name_slug': new_group.name}))
+            # Check if a group with the same name already exists
+            if Group.objects.filter(name=new_group.name).exists():
+                # If it does, inform the user and ask them to provide a different name
+                messages.error(request, "A group with this name already exists. Please provide a different name.")
+            else:
+                # If it doesn't, create the new group
+                new_group.admin = request.user
+                new_group.creation_date = timezone.now()
+                new_group.save()
+                return redirect(reverse('renovvgroup', kwargs={'group_name_slug': new_group.slug}))
     else:
         form = GroupForm()
     return render(request, 'renova/make_group.html', {'form': form})

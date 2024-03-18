@@ -18,7 +18,7 @@ Groups
             {% if popular_groups %}
                 <ol>
                 {% for group in popular_groups %}
-                    <li><a href="{% url 'renova:show_group' group.slug %}">{{ group.name }}</a></li>
+                    <li><a href="{% url 'renova:group' group.slug %}">{{ group.name }}</a></li>
                 {% endfor %}
                 </ol>
             {% else %}
@@ -29,7 +29,7 @@ Groups
             {% if recent_groups %}
                 <ol>
                 {% for group in recent_groups %}
-                    <li><a href="{% url 'renova:show_group' group.slug %}">{{ group.name }}</a></li>
+                    <li><a href="{% url 'renova:group' group.slug %}">{{ group.name }}</a></li>
                 {% endfor %}
                 </ol>
             {% else %}
