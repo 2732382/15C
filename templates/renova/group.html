@@ -41,11 +41,13 @@
                 </form>
             </div>
 
-            {% if request.user in group.members.all %}
-            <form method="post" action="{% url 'renova:leave_group' group.slug %}">
-                {% csrf_token %}
-                <button type="submit">Leave Group</button>
-            </form>
+            {% if request.user == group.admin %}
+                <p>You are the admin of this group.</p>
+            {% elif request.user in group.members.all %}
+                <form method="post" action="{% url 'renova:leave_group' group.slug %}">
+                    {% csrf_token %}
+                    <button type="submit">Leave Group</button>
+                </form>
             {% else %}
                 <form method="post" action="{% url 'renova:join_group' group.slug %}">
                     {% csrf_token %}
