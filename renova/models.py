@@ -11,7 +11,7 @@ class UserProfile(models.Model):
 
 
 class Group(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, primary_key=True)
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
     creation_date = models.DateField()
     icon = models.ImageField(upload_to='group_icons', blank=True)
@@ -31,6 +31,8 @@ class Activity(models.Model):
     name = models.CharField(max_length=200)
     duration = models.IntegerField()
 
+    def __str__(self):
+        return self.name
 
 class Log(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -40,3 +42,6 @@ class Log(models.Model):
     water = models.IntegerField(default=0)
     calories = models.IntegerField(default=0)
     sleep = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.id

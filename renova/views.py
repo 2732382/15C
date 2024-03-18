@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from datetime import timezone
 from django.shortcuts import render, redirect
 from .models import User, Group 
@@ -38,7 +39,7 @@ def about_us(request):
     This allows users to track their progress and see the impact of their efforts in real-time.
     In addition, we recognize the importance of adaptability in health and fitness. 
     That's why we offer activity recommendations that align with users' objectives, whether they're looking to lose weight, gain weight, or maintain their current physique.
-    
+
     At Renova, we're not just building a platform, we're building a community. 
     A community that supports, encourages, and empowers each other to achieve optimal health. 
     Join us on this journey to holistic wellbeing. Together, we can achieve more."""
@@ -110,7 +111,7 @@ def groups(request):
 def group(request, group_name_slug):
     return render(request, 'renova/group.html', {'group_name_slug': group_name_slug})
 
-
+@login_required
 def make_group(request):
     form = GroupForm()
     return render(request, 'renova/make_group.html', {'form': form})
