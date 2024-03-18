@@ -19,14 +19,25 @@
             </div>
 
             <div id="group-description"><p>{{ group.description }}</p></div>
-            
+
             <div id="group-announcements">
                 <h2>Announcements</h2>
                 <p>{{ group.announcements }}</p>
             </div>
         </div>
 
-        <div class="comment-section rightalign leftline">Comments</div>
+        <div class="comment-section rightalign leftline">
+            Comments
+            {% for comment in group.comments.all %}
+                <p>{{ comment.text }} - {{ comment.user.username }}</p>
+            {% endfor %}
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Post comment</button>
+            </form>
+        </div>
     </div>
 
     {% else %}

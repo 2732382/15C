@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.shortcuts import render, redirect
 from .models import User, Group 
-from .forms import GroupForm, LogForm, ActivityForm
+from .forms import GroupForm, LogForm, ActivityForm, CommentForm
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib import messages
@@ -120,6 +120,16 @@ def group(request, group_name_slug=None):
     try:
         group = Group.objects.get(slug=group_name_slug)
         context_dict['group'] = group
+        context_dict['form'] = CommentForm()
+
+        if request.method == 'POST':
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.group = group
+                comment.user = request.user
+                comment.save()
+                return redirect(reverse('renova:group', kwargs={'group_name_slug': group.slug}))
 
     except Group.DoesNotExist:
         context_dict['group'] = None
@@ -129,7 +139,6 @@ def group(request, group_name_slug=None):
     else:
         # Handle the case where group_name_slug is not provided
         return HttpResponse("Group not found")
-
 
 
 @login_required
@@ -147,7 +156,7 @@ def make_group(request):
                 new_group.admin = request.user
                 new_group.creation_date = timezone.now()
                 new_group.save()
-                return redirect(reverse('renovvgroup', kwargs={'group_name_slug': new_group.slug}))
+                return redirect(reverse('renova:group', kwargs={'group_name_slug': new_group.slug}))
     else:
         form = GroupForm()
     return render(request, 'renova/make_group.html', {'form': form})

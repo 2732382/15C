@@ -1,6 +1,6 @@
 #It's platonic in here
 from django import forms
-from renova.models import User, UserProfile, Group, Log, Activity
+from renova.models import User, UserProfile, Group, Log, Activity, Comment
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -36,3 +36,9 @@ class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
         fields = ['name', 'duration']
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
