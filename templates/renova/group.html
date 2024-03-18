@@ -34,11 +34,13 @@
                     <p>{{ comment.text }} - {{ comment.user.username }}</p>
                 {% endfor %}
 
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Post comment</button>
-                </form>
+                {% if request.user in group.members.all %}
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Post comment</button>
+                    </form>
+                {% endif %}
             </div>
 
             {% if request.user == group.admin %}
