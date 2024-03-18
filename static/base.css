@@ -512,3 +512,47 @@ footer {
     color: #333;
     margin: 0 50px;
 }
+
+
+/* COMMENTS */
+
+/* Style for the comment section */
+.comment-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-left: 1px solid #ccc;
+    color: #011627;
+}
+
+/* Style for each comment */
+.comment-section p {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+/* Style for the comment form */
+.comment-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-section form input,
+.comment-section form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment-section form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-section form button:hover {
+    background-color: #45a049;
+}

@@ -27,7 +27,7 @@
         </div>
 
         <div class="comment-section rightalign leftline">
-            Comments
+            <div class="leftalign">Comments</div>
             {% for comment in group.comments.all %}
                 <p>{{ comment.text }} - {{ comment.user.username }}</p>
             {% endfor %}

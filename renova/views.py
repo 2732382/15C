@@ -113,7 +113,7 @@ def groups(request):
     context_dict['make_group_summary'] = "placeholder (make-group summary)"
     return render(request, 'renova/groups.html', context=context_dict)
 
-
+@login_required
 def group(request, group_name_slug=None):
     context_dict = {}
     
