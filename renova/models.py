@@ -29,6 +29,8 @@ class Group(models.Model):
             self.slug - slugify(self.name)
 
         super().save(*args, **kwargs)
+        if not self.members.exists():
+            self.members.add(self.admin)
 
         if not self.members.exists():
             self.members.add(self.admin)
