@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block head %}
+{{ block.super }}  <!-- This line is important, it keeps the content of the 'head' block from the base.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
 {% block title %}
 About Us
 {% endblock %}
@@ -24,29 +29,29 @@ About Us
 <div class="about_us-wrapper">
 	<section class="team-section">
 		<div class="team-member">
-			<p class="name">John Doe</p>
+			<p class="name">Michal Cwiklinski</p>
 			<img src="team-member1.jpg" alt="Team Member 1">
-			<p class="position">CEO</p>
+			<p class="position">2778904C</p>
 		</div>
 		<div class="team-member">
-			<p class="name">John Doe</p>
+			<p class="name">Ben Whitehead</p>
 			<img src="team-member2.jpg" alt="Team Member 2">
-			<p class="position">CEO</p>
+			<p class="position">2732382W</p>
 		</div>
 		<div class="team-member">
-			<p class="name">John Doe</p>
+			<p class="name">Mohammed Alsenani</p>
 			<img src="team-member3.jpg" alt="Team Member 3">
-			<p class="position">CEO</p>
+			<p class="position">2840440A</p>
 		</div>
 		<div class="team-member">
-			<p class="name">John Doe</p>
+			<p class="name">Ronit Sethi</p>
 			<img src="team-member4.jpg" alt="Team Member 4">
-			<p class="position">CEO</p>
+			<p class="position">2651435S</p>
 		</div>
 		<div class="team-member">
-			<p class="name">John Doe</p>
+			<p class="name">Khalifa Albeshr</p>
 			<img src="team-member5.jpg" alt="Team Member 5">
-			<p class="position">CEO</p>
+			<p class="position">2840442A</p>
 		</div>
 	</section>
 
@@ -64,10 +69,10 @@ About Us
 		<!-- Our Team Section -->
 		<h2 class="team-heading">Socials</h2>
 		<div id="contact-socials">
-			<p>{{ youtube }}</p>
-			<p>{{ facebook }}</p>
-			<p>{{ instagram }}</p>
-			<p>{{ twitter }}</p>
+			<p><i class="fab fa-youtube"></i>{{ youtube }}</p>
+			<p><i class="fab fa-facebook"></i>{{ facebook }}</p>
+			<p><i class="fab fa-instagram"></i>{{ instagram }}</p>
+			<p><i class="fab fa-twitter"></i>{{ twitter }}</p>
 		</div>
 	</section>
 </div>

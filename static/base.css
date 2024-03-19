@@ -311,6 +311,10 @@ footer {
     color:#000033;
 }
 
+.socials i {
+    margin-right: 8px; 
+    color: #000033; 
+}
 
 #delete-account-button {
     margin-left: auto;
@@ -319,7 +323,7 @@ footer {
 
 #contact-socials {
     color:#011627;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 /* MyLogs */
@@ -415,22 +419,22 @@ footer {
     background: conic-gradient(rgb(0, 143, 83) 0%, rgb(0, 255, 136) 78%, transparent 78%, transparent 0%, lightgrey 100%);
 }
 
-.activity-log {
+/* activity log entry*/ 
+
+.activity-log-entry {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 600px; 
-    height: 50px; 
-    margin: 5px auto; 
-    padding: 0 10%; 
-    border: 3px solid lightgrey;
-    border-radius: 10px;
-    background-color: white;
+    justify-content: space-between; 
+    width: 100%; /* Adjust the width as necessary */
 }
 
 .activity-name, .activity-duration {
-    font-size: 16px; 
-    color: #011627;
+    flex-basis: 50%; 
+    margin: 0 10px; /* Adjust spacing as necessary */
+}
+
+/* Input styling */
+.activity-log-entry input[type="text"] {
+    width: 100%; 
 }
 
 
@@ -557,3 +561,37 @@ footer {
 .comment-section form button:hover {
     background-color: #45a049;
 }
+
+
+/* make a log page adjustments */
+.smallercont {
+    /* Other styles... */
+    width: 50%; /* Adjust width as needed */
+    margin: auto; /* Centers the element if within another container */
+    text-align: center; /* Center-aligns text within the element */
+    color: white; /* Changes text color to white */
+}
+
+.smallercont a {
+    color: white; 
+    display: inline-block; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+}
+
+
+.manage-account-container {
+    text-align: center; 
+    width: 100%; 
+}
+
+.manage-account-container a {
+    color: white; 
+    display: inline-block; 
+    margin: 0 auto; 
+    padding: 10px; 
+    text-decoration: none; 
+}
+
+
+

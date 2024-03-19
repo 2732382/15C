@@ -6,6 +6,7 @@ My Logs
 {% endblock %}
 
 {% block content %}
+
 <div class="my_logs middle">
 
   <div class="large-dial-container">
@@ -37,24 +38,38 @@ My Logs
     </div>
 
   </div>
-</div>
+  
+  <div class="smallercont"><a href="{% url 'renova:record_log' %}">Record a Log</a></div>
 
-<div class="container">
-  <div class="leftalign"><a href="{% url 'renova:record_log' %}">Record a Log</a></div>
-  <div class="rightalign"><a href="{% url 'renova:my_account' %}">Manage Account</a></div>
 </div>
 
 <div class="middle columns">
     <!-- To be added by the user. This is just a placeholder! -->
-  <div class="activity-log">
-    <span class="activity-name">Activity Name</span>
-    <span class="activity-duration">Duration mins</span>
-  </div>
+    <div class="activity-log-entry">
+      <div class="activity-name">
+          <label for="activity_name_input">Activity Name:</label>
+          <input id="activity_name_input" type="text" name="activity_name" />
+      </div>
+      <div class="activity-duration">
+          <label for="activity_duration_input">Duration mins:</label>
+          <input id="activity_duration_input" type="text" name="activity_duration" />
+      </div>
 
-  <div class="activity-log">
-    <span class="activity-name">Activity Name</span>
-    <span class="activity-duration">Duration mins</span>
-  </div>
+      </div>
+
+      <div class="activity-log-entry">
+        <div class="activity-name">
+            <label for="activity_name_input">Activity Name:</label>
+            <input id="activity_name_input" type="text" name="activity_name" />
+        </div>
+        <div class="activity-duration">
+            <label for="activity_duration_input">Duration mins:</label>
+            <input id="activity_duration_input" type="text" name="activity_duration" />
+        </div>
+</div>
 
 </div>
+
+<div class="manage-account-container"><a href="{% url 'renova:my_account' %}">Manage Account</a></div>
+
 {% endblock %}
