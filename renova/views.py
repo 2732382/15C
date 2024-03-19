@@ -133,7 +133,7 @@ def group(request, group_name_slug=None):
                 comment.group = group
                 comment.user = request.user
                 comment.save()
-                return redirect(reverse('renova:group', kwargs={'group_name_slug': group.slug}))
+                return redirect(reverse('renova:group', kwargs={'group_name_slug': group_name_slug}))
 
     except Group.DoesNotExist:
         context_dict['group'] = None
