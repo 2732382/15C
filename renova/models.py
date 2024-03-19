@@ -24,7 +24,7 @@ class Group(models.Model):
     slug = models.SlugField(unique = True)
 
     def save(self, *args, **kwargs):
-        if not self.id:  # Only execute this code if the instance is being created, not updated
+        if not self.pk:  # Only execute this code if the instance is being created, not updated
             # Add the admin user to the members field
             self.members.add(self.admin)
 
