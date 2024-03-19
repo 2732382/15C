@@ -24,11 +24,11 @@ class Group(models.Model):
     slug = models.SlugField(unique = True)
 
     def save(self, *args, **kwargs):
-        if not self.id:  # Only execute this code if the instance is being created, not updated
-            # Add the admin user to the members field
-            self.members.add(self.admin)
-
+        if not self.id:
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+        if not self.members.exists():
+            self.members.add(self.admin)
 
     def __str__(self):
         return self.name
