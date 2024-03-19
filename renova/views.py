@@ -6,6 +6,7 @@ from .forms import GroupForm, LogForm, ActivityForm, CommentForm
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib import messages
+from django.db.models import Count
 
 def index(request):
     context_dict = {}
@@ -106,7 +107,7 @@ def my_account(request):
 
 
 def groups(request):
-    popular_groups = Group.objects.order_by('members')[:5]
+    popular_groups = Group.objects.annotate(num_members=Count('members')).order_by('-num_members')[:5]
     recent_groups = Group.objects.order_by('creation_date')[:5]
 
     context_dict = {}
@@ -133,7 +134,7 @@ def group(request, group_name_slug=None):
                 comment.group = group
                 comment.user = request.user
                 comment.save()
-                return redirect(reverse('renova:group', kwargs={'group_name_slug': group.slug}))
+                return redirect(reverse('renova:group', kwargs={'group_name_slug': group_name_slug}))
 
     except Group.DoesNotExist:
         context_dict['group'] = None
