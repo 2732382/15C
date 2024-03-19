@@ -31,10 +31,10 @@
             <div class="comment-section rightalign leftline">
                 <div class="leftalign">Comments</div>
                 {% for comment in group.comments.all %}
-                    <p>{{ comment.text }} - {{ comment.user.username }}</p>
+                    <p>{{ comment.text }} - {{ comment.user.username }}{% if comment.user == group.admin %} (Admin){% else %} (Member){% endif %}</p>
                 {% endfor %}
 
-                {% if request.user in group.members.all %}
+                {% if request.user == group.admin or request.user in group.members.all %}
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}

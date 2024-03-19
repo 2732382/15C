@@ -160,6 +160,7 @@ def make_group(request):
                 new_group.admin = request.user
                 new_group.creation_date = timezone.now()
                 new_group.save()
+                form.save_m2m()
                 return redirect(reverse('renova:group', kwargs={'group_name_slug': new_group.slug}))
     else:
         form = GroupForm()
