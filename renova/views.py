@@ -156,7 +156,8 @@ def make_group(request):
                 # If it doesn't, create the new group
                 new_group.admin = request.user
                 new_group.creation_date = timezone.now()
-                new_group.save()
+                new_group.save()  # Save the group instance to the database
+                form.save_m2m()  # Save the many-to-many relationships
                 return redirect(reverse('renova:group', kwargs={'group_name_slug': new_group.slug}))
     else:
         form = GroupForm()
