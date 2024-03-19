@@ -13,7 +13,7 @@ class UserProfile(models.Model):
 
 
 class Group(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255, unique=True, primary_key=True)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     members = models.ManyToManyField(User, related_name='member_groups', blank=True)
     creation_date = models.DateField(default=timezone.now)

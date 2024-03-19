@@ -106,11 +106,14 @@ def my_account(request):
 
 
 def groups(request):
-    popular_groups_list = Group.objects.order_by('members')[:5]
-    newest_groups_list = Group.objects.order_by('creation_date')[:5]
+    popular_groups = Group.objects.order_by('members')[:5]
+    recent_groups = Group.objects.order_by('creation_date')[:5]
 
     context_dict = {}
+    context_dict['popular_groups'] = popular_groups
+    context_dict['recent_groups'] = recent_groups
     context_dict['make_group_summary'] = "placeholder (make-group summary)"
+
     return render(request, 'renova/groups.html', context=context_dict)
 
 
