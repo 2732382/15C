@@ -419,22 +419,32 @@ footer {
     background: conic-gradient(rgb(0, 143, 83) 0%, rgb(0, 255, 136) 78%, transparent 78%, transparent 0%, lightgrey 100%);
 }
 
-/* activity log entry*/ 
+/* activity log*/ 
 
-.activity-log-entry {
+.activity-log {
     display: flex;
-    justify-content: space-between; 
-    width: 100%; /* Adjust the width as necessary */
+    justify-content: space-between;
+    width: 100%; 
+    margin-bottom: 10px; 
 }
 
 .activity-name, .activity-duration {
-    flex-basis: 50%; 
-    margin: 0 10px; /* Adjust spacing as necessary */
+    flex-basis: 48%; 
+    margin: 0 10px; 
+    background-color: white; 
+    padding: 10px; 
+    border: 1px solid #878484; 
+    border-radius: 4px; 
+    display: flex;
+    align-items: left; 
+    color: #090313;
+    text-align: left;
 }
 
-/* Input styling */
-.activity-log-entry input[type="text"] {
+.activity-name span, .activity-duration span {
+    display: block; 
     width: 100%; 
+    color: #090313;
 }
 
 
@@ -592,6 +602,101 @@ footer {
     padding: 10px; 
     text-decoration: none; 
 }
+
+/* record log*/
+
+.forms-container {
+    display: flex;
+    justify-content: space-between; /* This will position the children with space between */
+    padding: 20px;
+}
+
+.log-form {
+    width: 40%; 
+    flex: 1; 
+    margin: 10px;    
+    margin-right: 20px; /* Adds some space between the forms */
+}
+
+.activity-form {
+    width:30%; 
+    margin: 5px;
+}
+
+/*login form*/
+
+.login-form {
+    background-color: rgb(90, 61, 118); 
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    width: 50%; 
+    margin: 0 auto; 
+}
+
+.form-field {
+    margin-bottom: 15px; 
+}
+
+.form-field label {
+    display: block; 
+    margin-bottom: 5px; 
+    color: white; 
+}
+
+.form-field input[type="number"] {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-sizing: border-box; 
+}
+
+input[type="submit"] {
+    width: 50%; 
+    padding: 15px 20px;
+    background-color: blueviolet; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px; 
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+/*activity form*/ 
+
+.activity-form {
+    background-color: rgb(90, 61, 118); 
+    padding: 20px;
+    border-radius: 15px;
+    border-color: #eeeef4;
+    width: 50%; 
+    margin: 0 auto; 
+}
+
+.activity-form label {
+    display: block; 
+    margin-bottom: 5px; 
+    color: white; 
+}
+
+.activity-form input[type="text"],
+.activity-form input[type="number"] {
+    width: 30%; /* Makes the input take the full width of the form */
+    padding: 10px;
+    margin-bottom: 10px; 
+    margin-top: 5px;
+    border: 1px solid gray; 
+    border-radius: 5px;
+    border-color: white;
+    box-sizing: border-box; 
+}
+
+
+
+
 
 
 

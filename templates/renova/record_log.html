@@ -6,14 +6,32 @@ Record Log
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <div class="login-form leftalign">
-        {{ log_form.as_p }}
-        <input type="submit" value="Add Log">
+<div class="forms-container">
+    <form method="post" class="log-form">
+        {% csrf_token %}
+        <div class="login-form">
+            <div class="form-field">
+                <label for="id_water">Water:</label>
+                <input id="id_water" type="number" name="water" />
+            </div>
+            <div class="form-field">
+                <label for="id_calories">Calories:</label>
+                <input id="id_calories" type="number" name="calories" />
+            </div>
+            <div class="form-field">
+                <label for="id_sleep">Sleep:</label>
+                <input id="id_sleep" type="number" name="sleep" />
+            </div>
+            <input type="submit" value="Add Log">
+        </div>
+    </form>
+
+    <div class="activity-form">
+        <label for="activity_name">Activity Name:</label>
+        <input id="activity_name" type="text" name="activity_name" />
+
+        <label for="activity_duration">Duration:</label>
+        <input id="activity_duration" type="number" name="activity_duration" />
     </div>
-    <div id="explore-groups" class="login-form rightalign">
-        {{ activity_form.as_p }}
-    </div>
-</form>
+</div>
 {% endblock %}
