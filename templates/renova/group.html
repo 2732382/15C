@@ -14,7 +14,11 @@
         <div class="container">
             <div class="columns">
                 <div id="group-logo">
-                    <img src="{{ group.icon.url }}" alt="{{ group.name }} Icon">
+                    {% if group.icon %}
+                        <img src="{{ group.icon.url }}" alt="{{ group.name }} Icon">
+                    {% else %}
+                        <img alt="{{ group.name }} Icon">
+                    {% endif %}
                     <h1>{{ group.name }}</h1>
                 </div>
 
