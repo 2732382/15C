@@ -21,7 +21,15 @@ def index(request):
     # Replace newlines with <br>
     context_dict['summary'] = context_dict['summary'].replace('\n', '<br />')
 
-    context_dict['group_summary'] = "placeholder (group summary)"
+    context_dict['group_summary'] = """groups within Renova serve as hubs for knowledge sharing, 
+    motivation, and collective progress. 
+    Whether users want to explore new activities, seek advice, or simply connect with others, 
+    participating in groups enhances their overall wellbeing journey. 
+    Encourage users to explore existing groups or create their own 
+    to maximize the benefits of community engagement!"""
+    # Replace newlines with <br>
+    context_dict['group_summary'] = context_dict['group_summary'].replace('\n', '<br />')
+    
     return render(request, 'renova/index.html', context=context_dict)
 
 
@@ -118,7 +126,25 @@ def groups(request):
     context_dict = {}
     context_dict['popular_groups'] = popular_groups
     context_dict['recent_groups'] = recent_groups
-    context_dict['make_group_summary'] = "placeholder (make-group summary)"
+    context_dict['make_group_summary'] = """Creating a group within Renova empowers you to take charge of your wellbeing journey. 
+    Here's why you might want to start your own group:
+
+    Shared Interests: Connect with others who share your passion
+     — whether it's fitness, nutrition, or mindfulness.
+
+    Accountability: Set collective goals and motivate each other to stay on track.
+
+    Curated Content: Share valuable insights and personalized recommendations.
+
+    Community Building: Engage in discussions and celebrate achievements together.
+
+    Event Planning: Organize virtual meetups, challenges, and workshops.
+
+    Safe Space: Create an inclusive environment where everyone feels welcome.
+    
+    Ready to inspire others? Start your group today! 🌟"""
+    # Replace newlines with <br>
+    context_dict['make_group_summary'] = context_dict['make_group_summary'].replace('\n', '<br />')
 
     return render(request, 'renova/groups.html', context=context_dict)
 

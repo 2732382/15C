@@ -39,8 +39,10 @@ Groups
     </div>
 
     <section id="explore-groups" class="rightalign leftline">
-		<h2><a href="{% url 'renova:make_group' %}">Make A Group</a></h2> 
-		<p>{{ make_group_summary }}</p>  
+        <div class="summaries">
+            <h2><a href="{% url 'renova:make_group' %}">Make A Group</a></h2> 
+            <p>{{ make_group_summary|safe }}</p>  
+        </div>
     <section>
 </div>
 {% endblock %}

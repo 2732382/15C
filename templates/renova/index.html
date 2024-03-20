@@ -13,9 +13,9 @@ Home
 		<a href="{% url 'registration_register' %}">Get Started!</a>
 	</div>
 
-	<div id="explore-groups" class="rightalign leftline columns"> 
+	<div id="explore-groups" class="rightalign leftline columns summaries"> 
 		<h2><a href="{% url 'renova:groups' %}">Explore Groups</a></h2> 
-		<p>{{ group_summary }}</p>  
+		<p>{{ group_summary|safe }}</p>  
 	</div>
 </div>
 {% endblock %}

@@ -447,6 +447,17 @@ footer {
     color: #090313;
 }
 
+.summaries {
+    float: none;
+}
+
+.summaries p {
+    text-align: left;
+}
+
+.summaries h2 {
+    text-align: center;
+}
 
 /* MAKE A GROUP */
 .group-form {
