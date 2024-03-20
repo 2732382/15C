@@ -4,6 +4,7 @@ from django.urls import reverse
 from renova.models import *
 
 class BasicViewTests(TestCase):
+
     def test_index_view(self):
         response = self.client.get(reverse('renova:index'))
         self.assertEqual(response.status_code, 200)
@@ -35,3 +36,6 @@ class BasicViewTests(TestCase):
     def test_make_group_view(self):
         response = self.client.get(reverse('renova:make_group'))
         self.assertEqual(response.status_code, 302)
+
+class GroupModelTests(TestCase):
+    pass

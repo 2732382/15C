@@ -15,15 +15,15 @@ Record Log
         {% csrf_token %}
         <div class="login-form">
             <div class="form-field">
-                <label for="id_water">Water:</label>
+                <label for="id_water">Water(litres):</label>
                 <input id="id_water" type="number" value=0 name="water" />
             </div>
             <div class="form-field">
-                <label for="id_calories">Calories:</label>
+                <label for="id_calories">Calories(kcal):</label>
                 <input id="id_calories" type="number" value=0 name="calories" />
             </div>
             <div class="form-field">
-                <label for="id_sleep">Sleep:</label>
+                <label for="id_sleep">Sleep(hours):</label>
                 <input id="id_sleep" type="number"  value=0 name="sleep" />
             </div>
             <input type="submit" value="Add Log">
@@ -33,7 +33,7 @@ Record Log
             <label for="activity_name">Activity Name:</label>
             <input id="activity_name" type="text" name="activity_name" />
     
-            <label for="activity_duration">Duration:</label>
+            <label for="activity_duration">Duration(minutes):</label>
             <input id="activity_duration" type="number" name="activity_duration" />
         </div>
     </form>

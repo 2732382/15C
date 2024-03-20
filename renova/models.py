@@ -30,9 +30,6 @@ class Group(models.Model):
         if not self.members.exists():
             self.members.add(self.admin)
 
-        if not self.members.exists():
-            self.members.add(self.admin)
-
     def __str__(self):
         return self.name
 
