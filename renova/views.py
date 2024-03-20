@@ -1,12 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from django.shortcuts import render, redirect
-from .models import User, Group 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import User, Group, Log
 from .forms import GroupForm, LogForm, ActivityForm, CommentForm
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib import messages
 from django.db.models import Count
+
 
 def index(request):
     context_dict = {}
@@ -69,34 +70,28 @@ def my_logs(request):
 
 @login_required
 def record_log(request):
-
+    activity_form = ActivityForm()  # Initialize activity_form here
     if request.method == 'POST':
         log_form = LogForm(request.POST)
-        activity_form = ActivityForm(request.POST)
-
         if log_form.is_valid():
             log = log_form.save(commit=False)
-            log.user = request.user 
-            log.creation_date = timezone.now()  # Set the creation date to the current date
-            log.save()
+            log.user = request.user
+            log.creation_date = timezone.now()
 
-            # Check if any fields in the activity form are filled out
-            if any(value for value in activity_form.data.values()):
-                # If any fields are filled out, validate all fields
+            # If any data was entered for the activity, process the activity form
+            if 'name' in request.POST or 'duration' in request.POST:
+                activity_form = ActivityForm(request.POST)
                 if activity_form.is_valid():
                     activity = activity_form.save(commit=False)
-                    activity.log = log
+                    log.total_duration += activity.duration
                     activity.save()
-                    log.total_duration += activity.duration  # Add the duration of the activity to the total duration
-                    log.save()
+                    log.activities.add(activity)
                 else:
-                    # If the form is not valid, return an error
-                    return render(request, 'renova/record_log.html', 
-                                  {'log_form': log_form, 'activity_form': activity_form, 'error': 'All fields in the activity form must be filled out.'})
+                    messages.error(request, 'Please complete the activity form.')
+            log.save()
             return redirect(reverse('my_logs'))
     else:
-        log_form = LogForm()
-        activity_form = ActivityForm()
+        log_form = LogForm(initial={'water': 0, 'calories': 0, 'sleep': 0})
 
     return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
 
@@ -104,6 +99,16 @@ def record_log(request):
 @login_required
 def my_account(request):
     return render(request, 'renova/my_account.html')
+
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        # Log the user out (optional but recommended)
+        request.user.delete()  # Delete the user account
+        return redirect('index')  # Redirect to the homepage
+
+    return render(request, 'renova/delete_account.html')  # Confirmation page
 
 
 def groups(request):
