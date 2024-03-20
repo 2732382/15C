@@ -5,6 +5,10 @@
 Record Log
 {% endblock %}
 
+{% block js %}
+<script src="{% static 'javascript/record_log.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="forms-container">
     <form method="post" class="log-form">
@@ -12,26 +16,26 @@ Record Log
         <div class="login-form">
             <div class="form-field">
                 <label for="id_water">Water:</label>
-                <input id="id_water" type="number" name="water" />
+                <input id="id_water" type="number" value=0 name="water" />
             </div>
             <div class="form-field">
                 <label for="id_calories">Calories:</label>
-                <input id="id_calories" type="number" name="calories" />
+                <input id="id_calories" type="number" value=0 name="calories" />
             </div>
             <div class="form-field">
                 <label for="id_sleep">Sleep:</label>
-                <input id="id_sleep" type="number" name="sleep" />
+                <input id="id_sleep" type="number"  value=0 name="sleep" />
             </div>
             <input type="submit" value="Add Log">
         </div>
+
+        <div class="activity-form">
+            <label for="activity_name">Activity Name:</label>
+            <input id="activity_name" type="text" name="activity_name" />
+    
+            <label for="activity_duration">Duration:</label>
+            <input id="activity_duration" type="number" name="activity_duration" />
+        </div>
     </form>
-
-    <div class="activity-form">
-        <label for="activity_name">Activity Name:</label>
-        <input id="activity_name" type="text" name="activity_name" />
-
-        <label for="activity_duration">Duration:</label>
-        <input id="activity_duration" type="number" name="activity_duration" />
-    </div>
 </div>
 {% endblock %}
