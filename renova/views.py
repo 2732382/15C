@@ -21,7 +21,11 @@ def index(request):
     # Replace newlines with <br>
     context_dict['summary'] = context_dict['summary'].replace('\n', '<br />')
 
-    context_dict['group_summary'] = "placeholder (group summary)"
+    context_dict['group_summary'] = """By people like you, for people like you!
+    Groups are a great way to stay motivated and connect with likeminded individuals who share your hobbies and goals.
+    You can explore the wide range of groups our users have created by clicking the link above, and if you don't find what you're looking for then you are more than welcome to found a group of your very own."""
+    context_dict['group_summary'] = context_dict['group_summary'].replace('\n', '<br />')
+    
     return render(request, 'renova/index.html', context=context_dict)
 
 
@@ -119,7 +123,7 @@ def groups(request):
     context_dict = {}
     context_dict['popular_groups'] = popular_groups
     context_dict['recent_groups'] = recent_groups
-    context_dict['make_group_summary'] = "placeholder (make-group summary)"
+    context_dict['make_group_summary'] = "Can't find the group for you? Not to worry, start one of your own by clicking the link above."
 
     return render(request, 'renova/groups.html', context=context_dict)
 

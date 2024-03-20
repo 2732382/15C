@@ -15,7 +15,7 @@ Home
 
 	<div id="explore-groups" class="rightalign leftline columns"> 
 		<h2><a href="{% url 'renova:groups' %}">Explore Groups</a></h2> 
-		<p>{{ group_summary }}</p>  
+		<p>{{ group_summary|safe }}</p>  
 	</div>
 </div>
 {% endblock %}
