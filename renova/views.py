@@ -106,7 +106,7 @@ def delete_account(request):
     if request.method == 'POST':
         # Log the user out (optional but recommended)
         request.user.delete()  # Delete the user account
-        return redirect('index')  # Redirect to the homepage
+        return redirect(reverse(index))  # Redirect to the homepage
 
     return render(request, 'renova/delete_account.html')  # Confirmation page
 
