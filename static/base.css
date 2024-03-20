@@ -695,8 +695,20 @@ input[type="submit"] {
 }
 
 
+/* DELETE ACCOUNT */
 
+/* Remove the underline from the link */
+a.delete-account {
+    padding-top: 250px;
+    text-decoration: none;
+    color: #ff0000; /* Red color for the link */
+}
 
+/* Add hover effect when the user mouses over the link */
+a.delete-account:hover {
+    text-decoration: underline;
+    color: #cc0000; /* Lighter red color on hover */
+}
 
 
 
