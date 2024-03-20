@@ -3,7 +3,7 @@ from django.urls import reverse
 
 from renova.models import *
 
-class ViewTests(TestCase):
+class LoadViewTestsNoLogin(TestCase):
 
     def test_index_view(self):
         response = self.client.get(reverse('renova:index'))
@@ -32,6 +32,31 @@ class ViewTests(TestCase):
     def test_make_group_view_no_login(self):
         response = self.client.get(reverse('renova:make_group'))
         self.assertEqual(response.status_code, 302)
+
+class LoadViewTestsLogin(TestCase):
+
+    def setUp(self):
+        example_user = User.objects.get_or_create(username='exampleuser')[0]
+        example_user.set_password('12345')
+        example_user.save()
+
+        self.client.force_login(example_user)
+    
+    def test_my_logs_view_no_login(self):
+        response = self.client.get(reverse('renova:my_logs'))
+        self.assertEqual(response.status_code, 200)
+    
+    def test_record_log_view_no_login(self):
+        response = self.client.get(reverse('renova:record_log'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_my_account_view_no_login(self):
+        response = self.client.get(reverse('renova:my_account'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_make_group_view_no_login(self):
+        response = self.client.get(reverse('renova:make_group'))
+        self.assertEqual(response.status_code, 200)
 
 class GroupsViewTests(TestCase):
 
