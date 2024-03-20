@@ -11,9 +11,15 @@ FAQ
 
     <div>
         <h2>What can we help you find?</h2>
+        <select id="faq-dropdown" name="faq-dropdown">
+            <option value="">Please select</option>
+            <option value="Change my password">Change my password</option>
+            <option value="View my activity history">View my activity history</option>
+            <option value="What kind of activities can I log in Renova?">What kind of activities can I log in Renova?</option>
+            <option value="Delete my account">Delete My Account</option>
+        </select>
     </div>
 
-    <div>JQUERY DROPBOX PLACEHOLDER</div>
 </div>
 
 <div class="leftalign columns">
@@ -25,7 +31,14 @@ FAQ
         {% endfor %}
         </ol>
     {% else %}
-        <strong>There are no questions present.</strong>
+    <div class="faq-questions">
+        <ul>
+            <li><strong>How do I reset my password if I've forgotten it?</strong></li>
+            <li><strong>Can I access this service on my mobile device?</strong></li>
+            <li><strong>Is there a way to export my data from your platform?</strong></li>
+            <li><strong>Who do I contact for technical support or assistance?</strong></li>
+        </ul>
+    </div>
     {% endif %}
 </div>
 
