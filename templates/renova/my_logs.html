@@ -55,8 +55,11 @@ My Logs
         </div>
       </div>
     {% endfor %}
+  {% empty %}
+    <div class="activity-log"></div>
+      <p>You have no logs at the moment.</p>
+    <div>
   {% endfor %}
-  
 </div>
 
 </div>
