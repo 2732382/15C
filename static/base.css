@@ -723,3 +723,9 @@ a.delete-account:hover {
 
 
 
+.profile-pic-rounded {
+    border-radius: 50%; /* This creates the rounded effect */
+    width: 100px; 
+    height: 100px; 
+   
+}
