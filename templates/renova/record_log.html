@@ -13,6 +13,7 @@ Record Log
 <div class="forms-container">
     <form method="post" class="log-form">
         {% csrf_token %}
+        <input type="hidden" name="form_name" value="log_form">
         <div class="login-form">
             <div class="form-field">
                 <label for="id_calories">Calories(kcal):</label>
@@ -28,13 +29,18 @@ Record Log
             </div>
             <input type="submit" value="Add Log">
         </div>
+    </form>
 
+    <form method="post" class="activity-form">
+        {% csrf_token %}
+        <input type="hidden" name="form_name" value="activity_form">
         <div class="activity-form">
             <label for="activity_name">Activity Name:</label>
             <input id="activity_name" type="text" name="activity_name" />
     
             <label for="activity_duration">Duration(minutes):</label>
             <input id="activity_duration" type="number" name="activity_duration" />
+            <input type="submit" value="Add Activity">
         </div>
     </form>
 </div>

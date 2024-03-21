@@ -6,6 +6,7 @@ $(document).ready(function() {
     var percent_duration = 100*(total_duration/target_duration)
 
     var average = (percent_calories+percent_water+percent_sleep+percent_duration)/4
+    average = Math.floor(average); // Round down to the nearest integer
 
     $("#calorie-dial").css({
         background: "conic-gradient(red 0%, rgb(255, 123, 0) "+percent_calories+"%, transparent "+percent_calories+"%, lightgrey 100%)",

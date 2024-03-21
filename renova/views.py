@@ -95,31 +95,37 @@ def my_logs(request):
 
 @login_required
 def record_log(request):
-    activity_form = ActivityForm()  # Initialize activity_form here
+    activity_form = ActivityForm(request.POST or None)
+    log_form = LogForm(request.POST or None, initial={'water': 0, 'calories': 0, 'sleep': 0})
+    
     if request.method == 'POST':
-        log_form = LogForm(request.POST)
-        if log_form.is_valid():
+        form_name = request.POST.get('form_name')
+        if form_name == 'activity_form' and activity_form.is_valid():
+            # Store the activity data in the session
+            activity_data = activity_form.cleaned_data
+            activities = request.session.get('activities', [])
+            activities.append(activity_data)
+            request.session['activities'] = activities
+            activity_form = ActivityForm()  # Clear the form
+        elif form_name == 'log_form' and log_form.is_valid():
+            # Create a new log
             log = log_form.save(commit=False)
             log.user = request.user
             log.creation_date = timezone.now()
-
-            # If any data was entered for the activity, process the activity form
-            if request.POST.get('activity_name') != "" or request.POST.get('activity_duration') != "":
-                activity_form = ActivityForm(request.POST)
-                if activity_form.is_valid():
-                    activity = activity_form.save(commit=False)
-                    log.total_duration += activity.duration
-                    activity.save()
-                    log.activities.add(activity)
-                else:
-                    messages.error(request, 'Activity form invalid.')
-
+            # Add the activities from the session to the log
+            activities = request.session.get('activities', [])
+            for activity_data in activities:
+                activity = Activity(**activity_data)
+                activity.save()
+                log.activities.add(activity)
+                log.total_duration += activity.duration
             log.save()
+            request.session['activities'] = []  # Clear the activities
             return redirect(reverse('renova:my_logs'))
-    else:
-        log_form = LogForm(initial={'water': 0, 'calories': 0, 'sleep': 0})
 
     return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
+
+
 
 @login_required
 def my_account(request):

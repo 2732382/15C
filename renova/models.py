@@ -44,6 +44,7 @@ class Comment(models.Model):
     def __str__(self):
         return self.text
 
+
 class Activity(models.Model):
     name = models.CharField(max_length=200)
     duration = models.IntegerField()
