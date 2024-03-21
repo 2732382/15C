@@ -76,10 +76,11 @@ from django.db.models import Sum, Avg
 @login_required
 def my_logs(request):
     logs = Log.objects.all().filter(user=request.user).order_by("-creation_date")
-    total_water = logs.aggregate(Sum('water'))['water__sum'] or 0
-    total_calories = logs.aggregate(Sum('calories'))['calories__sum'] or 0
-    total_sleep = logs.aggregate(Sum('sleep'))['sleep__sum'] or 0
-    total_duration = logs.aggregate(total_duration=Sum('total_duration'))['total_duration'] or 0
+    today_logs = Log.objects.all().filter(user=request.user).filter(creation_date=timezone.now())
+    total_water = today_logs.aggregate(Sum('water'))['water__sum'] or 0
+    total_calories = today_logs.aggregate(Sum('calories'))['calories__sum'] or 0
+    total_sleep = today_logs.aggregate(Sum('sleep'))['sleep__sum'] or 0
+    total_duration = today_logs.aggregate(total_duration=Sum('total_duration'))['total_duration'] or 0
 
     context_dict = {
         'logs' : logs,

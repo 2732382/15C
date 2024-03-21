@@ -399,24 +399,24 @@ footer {
 }
 
 /* Individual dial backgrounds */
-#dial1 {
-    background: conic-gradient(red 0%, rgb(255, 123, 0) 50%, transparent 50%, transparent 0%, lightgrey 100%);
+#calorie-dial {
+    background: conic-gradient(red 0%, rgb(255, 123, 0) 50%, transparent 50%, lightgrey 100%);
 }
 
-#dial2 {
-    background: conic-gradient(aqua 0%, rgb(0, 255, 200) 25%, transparent 25%, transparent 0%, lightgrey 100%);
+#water-dial {
+    background: conic-gradient(aqua 0%, rgb(0, 255, 200) 25%, transparent 25%, lightgrey 100%);
 }
 
-#dial3 {
-    background: conic-gradient(rgb(36, 0, 119) 0%, rgb(204, 0, 255) 75%, transparent 75%, transparent 0%, lightgrey 100%);
+#sleep-dial {
+    background: conic-gradient(rgb(36, 0, 119) 0%, rgb(204, 0, 255) 75%, transparent 75%, lightgrey 100%);
 }
 
-#dial4 {
-    background: conic-gradient(rgb(255, 166, 0) 0%, rgb(236, 228, 109) 100%, transparent 100%, transparent 0%, lightgrey 100%);
+#duration-dial {
+    background: conic-gradient(rgb(255, 166, 0) 0%, rgb(236, 228, 109) 100%, transparent 100%, lightgrey 100%);
 }
 
-#dial5 {
-    background: conic-gradient(rgb(0, 143, 83) 0%, rgb(0, 255, 136) 78%, transparent 78%, transparent 0%, lightgrey 100%);
+#overall-dial {
+    background: conic-gradient(rgb(0, 143, 83) 0%, rgb(0, 255, 136) 78%, transparent 78%, lightgrey 100%);
 }
 
 /* activity log*/ 
