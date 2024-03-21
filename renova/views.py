@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib import messages
 from django.db.models import Count
+from django.db.models import Prefetch
 
 
 def index(request):
@@ -70,13 +71,25 @@ def about_us(request):
 
     return render(request, 'renova/about_us.html', context=context_dict)
 
+from django.db.models import Sum, Avg
+
 @login_required
 def my_logs(request):
-    context_dict = {}
+    logs = Log.objects.filter(user=request.user).order_by("-creation_date")
+    total_water = logs.aggregate(Sum('water'))['water__sum'] or 0
+    total_calories = logs.aggregate(Sum('calories'))['calories__sum'] or 0
+    total_sleep = logs.aggregate(Sum('sleep'))['sleep__sum'] or 0
+    total_duration = logs.aggregate(total_duration=Sum('total_duration'))['total_duration'] or 0
 
-    context_dict['user_logs'] = Log.objects.all().filter(user=request.user).order_by("-creation_date")[:5]
+    context_dict = {
+        'total_water': total_water,
+        'total_calories': total_calories,
+        'total_sleep': total_sleep,
+        'total_duration': total_duration,
+    }
 
     return render(request, 'renova/my_logs.html', context=context_dict)
+
 
 @login_required
 def record_log(request):
@@ -100,7 +113,6 @@ def record_log(request):
                     messages.error(request, 'Activity form invalid.')
 
             log.save()
-            assert(1==0)
             return redirect(reverse('renova:my_logs'))
     else:
         log_form = LogForm(initial={'water': 0, 'calories': 0, 'sleep': 0})
