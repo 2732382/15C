@@ -89,7 +89,7 @@ def record_log(request):
             log.creation_date = timezone.now()
 
             # If any data was entered for the activity, process the activity form
-            if 'name' in request.POST or 'duration' in request.POST:
+            if request.POST.get('activity_name') != "" or request.POST.get('activity_duration') != "":
                 activity_form = ActivityForm(request.POST)
                 if activity_form.is_valid():
                     activity = activity_form.save(commit=False)
@@ -97,9 +97,11 @@ def record_log(request):
                     activity.save()
                     log.activities.add(activity)
                 else:
-                    messages.error(request, 'Please complete the activity form.')
+                    messages.error(request, 'Activity form invalid.')
+
             log.save()
-            return redirect(reverse('my_logs'))
+            assert(1==0)
+            return redirect(reverse('renova:my_logs'))
     else:
         log_form = LogForm(initial={'water': 0, 'calories': 0, 'sleep': 0})
 
