@@ -109,7 +109,7 @@ main {
 .middle {
     margin: auto;
     margin-bottom: 2%;
-    width: 50%;
+    width: 1000px;
     border: 1px solid rgb(132, 86, 192);
     padding: 70px 0;
     border-radius: 10px;
