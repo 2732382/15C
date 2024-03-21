@@ -17,11 +17,25 @@ My Logs
 
   <div class="small-dials-container">
 
-    <div id="dial1" class="dial"><div class="dial-text"><strong>{{ total_calories }}</strong><br />kcal</div></div>
-    <div id="dial2" class="dial"><div class="dial-text"><strong>{{ total_water }}</strong><br />ml</div></div>
-    <div id="dial3" class="dial"><div class="dial-text"><strong>{{ total_sleep }}</strong><br />hrs</div></div>
-    <div id="dial4" class="dial"><div class="dial-text"><strong>{{ total_duration }}</strong><br />mins</div></div>    
+    <div class="dial-container">
+      <div class="dial-label">Calories</div>
+      <div id="dial1" class="dial"><div class="dial-text"><strong>1300</strong><br />kcal</div></div>
+    </div>
 
+    <div class="dial-container">
+      <div class="dial-label">Water</div>
+      <div id="dial2" class="dial"><div class="dial-text"><strong>1300</strong><br />ml</div></div>
+    </div>
+
+    <div class="dial-container">
+      <div class="dial-label">Sleep</div>
+      <div id="dial3" class="dial"><div class="dial-text"><strong>7</strong><br />hrs</div></div>
+    </div>
+
+    <div class="dial-container">
+      <div class="dial-label">Active Duration</div>
+      <div id="dial4" class="dial"><div class="dial-text"><strong>32</strong><br />mins</div></div>
+    </div>
   </div>
 
   <div class="smallercont"><a href="{% url 'renova:record_log' %}">Record a Log</a></div>
@@ -43,13 +57,9 @@ My Logs
   {% empty %}
     <div class="activity-log"></div>
     <p>You have no logs at the moment.</p>
-    <div>
   {% endfor %}
 </div>
 
-</div>
-
-</div>
 
 <div class="manage-account-container"><a href="{% url 'renova:my_account' %}">Manage Account</a></div>
 
