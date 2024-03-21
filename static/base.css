@@ -729,3 +729,45 @@ a.delete-account:hover {
     height: 100px; 
    
 }
+
+.comment {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.comment-user strong {
+    margin-left: 10px;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.comment-user strong {
+    margin-left: 10px;
+}
+
+.profile-pic {
+    border-radius: 50%; 
+}
+
+.comment-text {
+    margin-left: 40px;
+}
+
+.comment-text {
+    margin-left: 40px;
+}

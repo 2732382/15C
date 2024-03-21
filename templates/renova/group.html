@@ -33,11 +33,23 @@
             </div>
 
             <div class="comment-section rightalign leftline">
-                <div class="leftalign">Comments</div>
+                <b><div class="leftalign">Comments</div></b>
+
                 {% for comment in group.comments.all %}
-                    <p>{{ comment.text }} - {{ comment.user.username }}{% if comment.user == group.admin %} (Admin){% else %} (Member){% endif %}</p>
+                    <div class="comment">
+                        <br>
+                        <br>
+                        <div class="comment-user">
+                            <img class="profile-pic" src="{{ comment.user.userprofile.picture.url }}" alt="{{ comment.user.username }}'s Profile Picture" width="30" height="30">
+                            <strong>{{ comment.user.username }}</strong>{% if comment.user == group.admin %} (Admin){% else %} (Member) {% endif %}
+                        </div>
+                        <div class="comment-text">
+                            {{ comment.text }}
+                        </div>
+                    </div>
                 {% endfor %}
 
+                
                 {% if request.user == group.admin or request.user in group.members.all %}
                     <form method="post">
                         {% csrf_token %}
