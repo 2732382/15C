@@ -110,7 +110,6 @@ class MyLogsViewTests(TestCase):
         running_log.activities.add(running_activity)
         running_log.save()
 
-
         response = self.client.get(reverse('renova:my_logs'))
 
         self.assertEqual(response.status_code, 200)

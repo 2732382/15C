@@ -29,7 +29,7 @@ My Logs
 </div>
 
 <div class="middle columns">
-  {% for log in user_logs %}
+  {% for log in logs %}
     {% for activity in log.activities.all %}
       <div class="activity-log">
         <div class="activity-name">
