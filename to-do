@@ -1,12 +1,21 @@
 to do:
+
+Ben curent job:
+    - OVERALL dial is calculated as average score over all dials
+
+
+=========================
+IMPORTANT: 
+- when recording a log, the activity is not captured. As a result it does not appear on the my_logs page. This is priority.
+=========================
+
+=========================
 - plus button 'record_log' (add activity to current Log, create default if necessary) 
 =========================
 - user-defined goals (kcal, water, sleep, total_duration)
 =========================
 - pop-up suggestions (in order to complete daily milestones. for ex, "drink some water!", "do some jogging!", "eat something!")
 - call pop-ups when user is behind on a metric given time left in day (OPTIONAL EXTRA)
-=========================
-- OVERALL dial is calculated as average score over all dials
 =========================
 - 'about us' to include team pictures
 =========================
