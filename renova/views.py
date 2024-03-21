@@ -112,6 +112,8 @@ def record_log(request):
             log = log_form.save(commit=False)
             log.user = request.user
             log.creation_date = timezone.now()
+            log.save()  # Save the log before adding activities
+            
             # Add the activities from the session to the log
             activities = request.session.get('activities', [])
             for activity_data in activities:
@@ -119,12 +121,18 @@ def record_log(request):
                 activity.save()
                 log.activities.add(activity)
                 log.total_duration += activity.duration
-            log.save()
+            
+            # Add a default activity if the "Add Log" button is pressed
+            default_activity_data = {'name': 'walking', 'duration': 10}
+            default_activity = Activity.objects.create(**default_activity_data)
+            log.activities.add(default_activity)
+            log.total_duration += default_activity.duration
+
+            log.save()  # Save the log after adding activities
             request.session['activities'] = []  # Clear the activities
             return redirect(reverse('renova:my_logs'))
 
     return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
-
 
 
 @login_required
