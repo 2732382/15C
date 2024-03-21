@@ -5,13 +5,32 @@
 My Logs
 {% endblock %}
 
+{% block js %}
+<script>
+  // ---------------------------------------------
+  // HARDCODED TARGETS ATM
+  // ---------------------------------------------
+  var target_calories = 2000;
+  var target_water = 2500;
+  var target_sleep = 8;
+  var target_duration = 60;
+  // ---------------------------------------------
+
+  var total_calories = "{{total_calories}}";
+  var total_water = "{{total_water}}";
+  var total_sleep = "{{total_sleep}}";
+  var total_duration = "{{total_duration}}";
+</script>
+<script src="{% static 'javascript/my_logs.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 
 <div class="my_logs middle">
 
   <div class="large-dial-container">
     <div class="dial-label">OVERALL</div>
-    <div id="dial5" class="dial large-dial"><div class="dial-text"><strong>78</strong><br />/100</div></div>
+    <div id="overall-dial" class="dial large-dial"><div class="dial-text"><strong>0</strong><br />/100</div></div>
   </div>
 
 
@@ -19,22 +38,22 @@ My Logs
 
     <div class="dial-container">
       <div class="dial-label">Calories</div>
-      <div id="dial1" class="dial"><div class="dial-text"><strong>1300</strong><br />kcal</div></div>
+      <div id="calorie-dial" class="dial"><div class="dial-text"><strong>{{ total_calories }}</strong><br />kcal</div></div>
     </div>
 
     <div class="dial-container">
       <div class="dial-label">Water</div>
-      <div id="dial2" class="dial"><div class="dial-text"><strong>1300</strong><br />ml</div></div>
+      <div id="water-dial" class="dial"><div class="dial-text"><strong>{{ total_water }}</strong><br />ml</div></div>
     </div>
 
     <div class="dial-container">
       <div class="dial-label">Sleep</div>
-      <div id="dial3" class="dial"><div class="dial-text"><strong>7</strong><br />hrs</div></div>
+      <div id="sleep-dial" class="dial"><div class="dial-text"><strong>{{ total_sleep }}</strong><br />hrs</div></div>
     </div>
 
     <div class="dial-container">
       <div class="dial-label">Active Duration</div>
-      <div id="dial4" class="dial"><div class="dial-text"><strong>32</strong><br />mins</div></div>
+      <div id="duration-dial" class="dial"><div class="dial-text"><strong>{{ total_duration }}</strong><br />mins</div></div>
     </div>
   </div>
 
