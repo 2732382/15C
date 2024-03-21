@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User, Group, Log
-from .forms import GroupForm, LogForm, ActivityForm, CommentForm
+from renova.models import *
+from renova.forms import *
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib import messages
@@ -70,11 +70,13 @@ def about_us(request):
 
     return render(request, 'renova/about_us.html', context=context_dict)
 
-
 @login_required
 def my_logs(request):
-    return render(request, 'renova/my_logs.html')
+    context_dict = {}
 
+    context_dict['user_logs'] = Log.objects.all().filter(user=request.user).order_by("-creation_date")[:5]
+
+    return render(request, 'renova/my_logs.html', context=context_dict)
 
 @login_required
 def record_log(request):
@@ -102,7 +104,6 @@ def record_log(request):
         log_form = LogForm(initial={'water': 0, 'calories': 0, 'sleep': 0})
 
     return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
-
 
 @login_required
 def my_account(request):
@@ -147,7 +148,6 @@ def groups(request):
     context_dict['make_group_summary'] = context_dict['make_group_summary'].replace('\n', '<br />')
 
     return render(request, 'renova/groups.html', context=context_dict)
-
 
 @login_required
 def group(request, group_name_slug=None):

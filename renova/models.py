@@ -54,7 +54,8 @@ class Activity(models.Model):
 
 class Log(models.Model):
     creation_date = models.DateField(default=timezone.now)
-    activities = models.ManyToManyField(Activity)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    activities = models.ManyToManyField(Activity, blank=True)
     total_duration = models.IntegerField(default=0)
     water = models.IntegerField(default=0)
     calories = models.IntegerField(default=0)

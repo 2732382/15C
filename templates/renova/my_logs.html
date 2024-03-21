@@ -44,24 +44,19 @@ My Logs
 </div>
 
 <div class="middle columns">
-    <!-- To be added by the user. This is just a placeholder! -->
-  <div class="activity-log">
-    <div class="activity-name">
-        <span>Activity Name: {{ activity_name_variable }}</span>
-    </div>
-    <div class="activity-duration">
-        <span>Duration mins: {{ activity_duration_variable }}</span>
-    </div>
-  </div>
-
-  <div class="activity-log">
-    <div class="activity-name">
-        <span>Activity Name: {{ another_activity_name_variable }}</span>
-    </div>
-    <div class="activity-duration">
-        <span>Duration mins: {{ another_activity_duration_variable }}</span>
-    </div>
-  </div>
+  {% for log in user_logs %}
+    {% for activity in log.activities.all %}
+      <div class="activity-log">
+        <div class="activity-name">
+          <span>Activity Name: {{ activity.name }}</span>
+        </div>
+        <div class="activity-duration">
+          <span>Duration mins: {{ activity.duration }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+  
 </div>
 
 </div>
