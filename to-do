@@ -11,3 +11,9 @@ to do:
 - 'make-group' css for form to stop description/announcements textfields from extending beyond container
 =========================
 - populating FAQ dropbox with helpful responses aligned with query
+- fix 'Popular Questions' to display based on views on a question
+=========================
+- admin to be able to remove comments
+- admin to be able to remove members
+=========================
+- save/discard changes of 'my_account'
