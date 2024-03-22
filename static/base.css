@@ -426,11 +426,12 @@ footer {
     justify-content: space-between;
     width: 100%; 
     margin-bottom: 10px; 
+    background-color: #8b8b8b62;
 }
 
 .activity-name, .activity-duration {
     flex-basis: 48%; 
-    margin: 0 10px; 
+    margin: 0 20px; 
     background-color: white; 
     padding: 10px; 
     border: 1px solid #878484; 
@@ -618,20 +619,20 @@ footer {
 
 .forms-container {
     display: flex;
-    justify-content: space-between; /* This will position the children with space between */
+    flex-direction: column-reverse;
+    align-items: flex-start;
     padding: 20px;
 }
 
 .log-form {
-    width: 40%; 
-    flex: 1; 
-    margin: 10px;    
-    margin-right: 20px; /* Adds some space between the forms */
+    border-radius: 5%;
 }
 
-.activity-form {
-    width:30%; 
-    margin: 5px;
+.log-form, .activity-form {
+    width: 100%; /* Take the full width of the container */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    padding: 10px; /* Space inside the border */
+    margin-bottom: 20px; /* Space between the forms */
 }
 
 /*login form*/
@@ -641,7 +642,7 @@ footer {
     padding: 20px;
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-    width: 50%; 
+    width: 500px; 
     margin: 0 auto; 
 }
 
@@ -683,7 +684,7 @@ input[type="submit"] {
     padding: 20px;
     border-radius: 15px;
     border-color: #eeeef4;
-    width: 50%; 
+    width: 500px; 
     margin: 0 auto; 
 }
 
@@ -770,4 +771,17 @@ a.delete-account:hover {
 
 .comment-text {
     margin-left: 40px;
+}
+
+
+/* ANIMATED MESSAGES */
+@keyframes colorChange {
+    0% {color: #ff6347;} /* Vibrant color at the start */
+    100% {color: #696969;} /* Saturated color at the end */
+}
+
+.alert {
+    animation-name: colorChange;
+    animation-duration: 3s; 
+    animation-fill-mode: forwards;
 }
