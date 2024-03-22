@@ -41,7 +41,7 @@
                         <br>
                         <div class="comment-user">
                             <img class="profile-pic" src="{{ comment.user.userprofile.picture.url }}" alt="{{ comment.user.username }}'s Profile Picture" width="30" height="30">
-                            <strong>{{ comment.user.username }}</strong>{% if comment.user == group.admin %} (Admin){% else %} (Member) {% endif %}
+                            <strong>{{ comment.user.username }}</strong>{% if comment.user == group.admin %} (Admin){% else %} (Member){% endif %}
                         </div>
                         <div class="comment-text">
                             {{ comment.text }}
