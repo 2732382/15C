@@ -8,15 +8,29 @@ from renova.models import *
 
 def populate():
 
-    first_admin = User.objects.get_or_create(username="temp_admin", password="12345")[0]
+    first_admin = User.objects.create_user(username="temp_admin",
+                                           password="12345")
     first_admin.save()
+    first_admin_profile = UserProfile.objects.get_or_create(user=first_admin)[0]
+    first_admin_profile.save()
 
-    RB_user = User.objects.get_or_create(username='RedBlue',password='Conglomerate123')[0]
+    RB_user = User.objects.create_user(username='RedBlue',
+                                       password='Conglomerate123')
     RB_user.save()
-    OG_user = User.objects.get_or_create(username='OrangeGrey',password='Building123')[0]
+    RB_profile = UserProfile.objects.get_or_create(user=RB_user)[0]
+    RB_profile.save()
+
+    OG_user = User.objects.create_user(username='OrangeGrey',
+                                       password='Building123')
     OG_user.save()
-    YG_user = User.objects.get_or_create(username='YellowGreen',password='Representative123')[0]
+    OG_profile = UserProfile.objects.get_or_create(user=OG_user)[0]
+    OG_profile.save()
+
+    YG_user = User.objects.create_user(username='YellowGreen',
+                                       password='Representative123')
     YG_user.save()
+    YG_profile = UserProfile.objects.get_or_create(user=YG_user)[0]
+    YG_profile.save()
 
     groups = {
         'Running group': {"admin": first_admin,
