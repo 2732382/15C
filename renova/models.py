@@ -48,6 +48,7 @@ class Comment(models.Model):
 class Activity(models.Model):
     name = models.CharField(max_length=200)
     duration = models.IntegerField()
+    log = models.ForeignKey('Log', related_name='activities', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -56,7 +57,6 @@ class Activity(models.Model):
 class Log(models.Model):
     creation_date = models.DateField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    activities = models.ManyToManyField(Activity, blank=True)
     total_duration = models.IntegerField(default=0)
     water = models.IntegerField(default=0)
     calories = models.IntegerField(default=0)

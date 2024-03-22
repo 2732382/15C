@@ -101,11 +101,12 @@ def record_log(request):
     if request.method == 'POST':
         form_name = request.POST.get('form_name')
         if form_name == 'activity_form' and activity_form.is_valid():
-            # Store the activity data in the session
+            # Don't save the activity yet, just store the form data in the session
             activity_data = activity_form.cleaned_data
             activities = request.session.get('activities', [])
             activities.append(activity_data)
             request.session['activities'] = activities
+            
             activity_form = ActivityForm()  # Clear the form
         elif form_name == 'log_form' and log_form.is_valid():
             # Create a new log
@@ -117,22 +118,16 @@ def record_log(request):
             # Add the activities from the session to the log
             activities = request.session.get('activities', [])
             for activity_data in activities:
-                activity = Activity(**activity_data)
+                activity = Activity(log=log, **activity_data)
                 activity.save()
-                log.activities.add(activity)
                 log.total_duration += activity.duration
-            
-            # Add a default activity if the "Add Log" button is pressed
-            default_activity_data = {'name': 'walking', 'duration': 10}
-            default_activity = Activity.objects.create(**default_activity_data)
-            log.activities.add(default_activity)
-            log.total_duration += default_activity.duration
 
             log.save()  # Save the log after adding activities
             request.session['activities'] = []  # Clear the activities
             return redirect(reverse('renova:my_logs'))
 
     return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
+
 
 
 @login_required

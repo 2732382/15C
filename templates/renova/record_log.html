@@ -35,11 +35,11 @@ Record Log
         {% csrf_token %}
         <input type="hidden" name="form_name" value="activity_form">
         <div class="activity-form">
-            <label for="activity_name">Activity Name:</label>
-            <input id="activity_name" type="text" name="activity_name" />
+            <label for="id_name">Activity Name:</label>
+            <input id="id_name" type="text" name="name" />
     
-            <label for="activity_duration">Duration (minutes):</label>
-            <input id="activity_duration" type="number" name="activity_duration" />
+            <label for="id_duration">Duration (minutes):</label>
+            <input id="id_duration" type="number" name="duration" />
             <input type="submit" value="Add Activity">
         </div>
     </form>
