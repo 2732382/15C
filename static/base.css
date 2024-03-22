@@ -9,9 +9,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* Add a dark background color */
+   
     background: linear-gradient(to top, #1a0033, #011627);
-    /* Use a light color for text */
+ 
     color: #FDFFFC;
 }
 
@@ -53,17 +53,17 @@ header {
 
 nav ul {
     list-style-type: none;
-    font-size: 1.5vw; /* Adjust as needed */
+    font-size: 1.5vw; 
 }
 
 nav ul li {
     display: inline;
-    margin: 5vw; /* Adjust as needed */
+    margin: 5vw; 
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #FDFFFC; /* Light color for contrast */
+    color: #FDFFFC; 
     font-family: 'Roboto', sans-serif;
 }
 
@@ -124,22 +124,23 @@ main {
 
 .leftalign {
 	float: left;
-    margin-left: 150px;
+    margin-left: 10%;
+    margin-right: 5%;
 }
 
 .rightalign {
     float: right;
-    margin-right: 150px;
-    padding-left: 100px;
+    margin: 0 10%;
+    padding-left: 5%;
 }
 
 #explore-groups {
-    margin-right: 500px;
+    margin-right: 5%;
 }
 
 .container {
     display: flex;
-    justify-content: space-between; /* This will distribute the items evenly across the row */
+    justify-content: nowrap; 
 }
 
 .left, .right {
@@ -157,8 +158,8 @@ footer {
     padding-top: 10px; 
     padding-right: 50px; 
     border-top: 1px solid #ffffff; 
-    background-color: #090313; /* Black color */
-    color: #ffffff; /* White color for contrast */
+    background-color: #090313; 
+    color: #ffffff; 
 }
 
 .columns {
@@ -171,6 +172,18 @@ footer {
     border-left: 1px solid #FDFFFC;
 }
 
+/* Media query for screens smaller than 800px */
+@media screen and (max-width: 800px) {
+    .leftalign {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .rightalign {
+        margin-right: 50px;
+        padding-left: 50px;
+    }
+}
 
 /* LOGIN */
 .login-form {
@@ -237,7 +250,7 @@ footer {
     padding-left: 0%;
     padding-right: 0%; 
 	border: 1px solid #ccc;
-    width: 50vw; /* adjust as needed */
+    width: 50vw;
     
 }
 
@@ -245,18 +258,18 @@ footer {
     text-align: center;
     margin-bottom: 20px;
 	width: 20%;
-    font-size: 1.5vw; /* adjust as needed */
+    font-size: 1.5vw; 
 }
 
 .team-member {
     width: 19%;
     text-align: center;
     margin: 5% 0;
-    font-size: 0.75vw; /* adjust as needed */
+    font-size: 0.75vw; 
 }
 
 .team-member img {
-    width: 5vw; /* adjust as needed */
+    width: 5vw; 
     height: auto;
     border-radius: 0%;
 	border: 1px solid #ccc;
@@ -265,12 +278,10 @@ footer {
 
 .team-member .name {
     font-weight: bold;
-    /* Use a lighter color for text */
     color: #ffffff;
 }
 
 .team-member .position {
-    /* Use a lighter color for text */
     color: #cccccc;
 }
 
@@ -285,8 +296,8 @@ footer {
     background-color: #f0f0f0; 
     padding: 1% 2%;
     border-radius: 10%;
-    width: 13vw; /* adjust as needed */
-    font-size: 1vw; /* adjust as needed */
+    width: 13vw; 
+    font-size: 1vw; 
     margin: 0 2%;
 }
 
@@ -305,8 +316,8 @@ footer {
     background-color: #f0f0f0;
     padding: 1% 2%;
     border-radius: 10%;
-    width: 15vw; /* adjust as needed */
-    font-size: 1vw; /* adjust as needed */
+    width: 15vw;
+    font-size: 1vw; 
     margin-right: 5%;
 }
 
@@ -373,9 +384,9 @@ footer {
 }
 
 .dial-label {
-    margin-bottom: 10px; /* Adjust as needed */
+    margin-bottom: 10px;
     text-align: center;
-    font-size: 14px; /* Adjust as needed */
+    font-size: 14px; 
 }
 
 .dial::before {
@@ -402,7 +413,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 14px; /* Adjust as needed */
+    font-size: 14px; 
 }
 
 /* Individual dial backgrounds */
@@ -594,27 +605,27 @@ footer {
 
 /* CSS for the delete comment button */
 .delete-comment {
-    background-color: #f44336; /* Red color */
-    color: white; /* White text color */
-    width: auto; /* Adjust the width as needed */
-    padding: 10px 20px; /* Add some padding */
-    margin: 10px 0; /* Add some margin */
-    border: none; /* Remove border */
-    cursor: pointer; /* Add a pointer cursor on hover */
+    background-color: #f44336; 
+    color: white; 
+    width: auto; 
+    padding: 10px 20px; 
+    margin: 10px 0; 
+    border: none; 
+    cursor: pointer; 
 }
 
 .delete-comment:hover {
-    background-color: #d32f2f; /* Darken the background color on hover */
+    background-color: #d32f2f; 
 }
 
 
 /* make a log page adjustments */
 .smallercont {
     /* Other styles... */
-    width: 50%; /* Adjust width as needed */
-    margin: auto; /* Centers the element if within another container */
-    text-align: center; /* Center-aligns text within the element */
-    color: white; /* Changes text color to white */
+    width: 50%; 
+    margin: auto; 
+    text-align: center; 
+    color: white; 
 }
 
 .smallercont a {
@@ -652,10 +663,10 @@ footer {
 }
 
 .log-form, .activity-form {
-    width: 100%; /* Take the full width of the container */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    padding: 10px; /* Space inside the border */
-    margin-bottom: 20px; /* Space between the forms */
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 10px; 
+    margin-bottom: 20px;
 }
 
 /*login form*/
@@ -719,7 +730,7 @@ input[type="submit"] {
 
 .activity-form input[type="text"],
 .activity-form input[type="number"] {
-    width: 30%; /* Makes the input take the full width of the form */
+    width: 30%; 
     padding: 10px;
     margin-bottom: 10px; 
     margin-top: 5px;
@@ -841,10 +852,10 @@ a.delete-account:hover {
 
 .member form button {
     padding: 5px 10px;
-    background-color: #dc3545; /* Red background */
-    color: #fff; /* White text */
+    background-color: #dc3545; 
+    color: #fff; 
     border: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px; 
     cursor: pointer; /* Pointer cursor on hover */
 }
 
