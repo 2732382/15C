@@ -176,10 +176,12 @@ def delete_account(request):
 def groups(request):
     popular_groups = Group.objects.annotate(num_members=Count('members')).order_by('-num_members')[:5]
     recent_groups = Group.objects.order_by('creation_date')[:5]
+    all_groups = Group.objects.all()
 
     context_dict = {}
     context_dict['popular_groups'] = popular_groups
     context_dict['recent_groups'] = recent_groups
+    context_dict['all_groups'] = all_groups
     context_dict['make_group_summary'] = """Creating a group within Renova empowers you to take charge of your wellbeing journey. 
     Here's why you might want to start your own group:
 

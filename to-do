@@ -5,8 +5,9 @@ to do:
 =========================
 - pop-up suggestions (in order to complete daily milestones. for ex, "drink some water!", "do some jogging!", "eat something!")
 - call pop-ups when user is behind on a metric given time left in day (OPTIONAL EXTRA)
-=========================
-- 'make-group' css for form to stop description/announcements textfields from extending beyond container
+
+
+IMPORTANT!
 =========================
 - populating FAQ dropbox with helpful responses aligned with query
 - fix 'Popular Questions' to display based on views on a question
