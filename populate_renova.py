@@ -67,10 +67,10 @@ def populate():
             g.members.add(member)
         
 
-        for comm in comments[group]:
+        for comment in comments[group]:
             c =Comment.objects.get_or_create(group=g,
-                                             user=comm["user"],
-                                             text=comm["text"])[0]
+                                             user=comment["user"],
+                                             text=comment["text"])[0]
             c.save()
         
 
