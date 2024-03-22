@@ -578,7 +578,7 @@ footer {
     border-radius: 5px;
 }
 
-.comment-section form button {
+.submit-comment {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -587,8 +587,23 @@ footer {
     cursor: pointer;
 }
 
-.comment-section form button:hover {
+.submit-button:hover {
     background-color: #45a049;
+}
+
+/* CSS for the delete comment button */
+.delete-comment {
+    background-color: #f44336; /* Red color */
+    color: white; /* White text color */
+    width: auto; /* Adjust the width as needed */
+    padding: 10px 20px; /* Add some padding */
+    margin: 10px 0; /* Add some margin */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+.delete-comment:hover {
+    background-color: #d32f2f; /* Darken the background color on hover */
 }
 
 

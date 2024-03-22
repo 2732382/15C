@@ -229,6 +229,16 @@ def delete_comment(request, comment_id):
 
 
 @login_required
+def remove_member(request, group_slug, username):
+    group = get_object_or_404(Group, slug=group_slug)
+    user = get_object_or_404(User, username=username)
+    if request.user != group.admin:
+        return HttpResponseForbidden()
+    group.remove_member(user)
+    return redirect('renova:group', group_name_slug=group.slug)
+
+
+@login_required
 def make_group(request):
     if request.method == 'POST':
         form = GroupForm(request.POST, request.FILES)

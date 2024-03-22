@@ -49,7 +49,7 @@
                         {% if request.user == group.admin %}
                             <form method="post" action="{% url 'renova:delete_comment' comment.id %}">
                                 {% csrf_token %}
-                                <button type="submit">Delete Comment</button>
+                                <button type="submit" class="delete-comment">Delete Comment</button>
                             </form>
                         {% endif %}
                     </div>
@@ -60,7 +60,7 @@
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit">Post comment</button>
+                        <button type="submit" class="submit-comment">Post comment</button>
                     </form>
                 {% endif %}
             </div>
@@ -78,6 +78,23 @@
                     <button type="submit">Join Group</button>
                 </form>
             {% endif %}
+
+            {% if request.user == group.admin %}
+                <div class="member-section">
+                    <h2>Members</h2>
+                    {% for member in group.members.all %}
+                        <div class="member">
+                            <!-- Display member information -->
+                            <p>{{ member.username }}</p>
+                            <form method="post" action="{% url 'renova:remove_member' group.slug member.username %}">
+                                {% csrf_token %}
+                                <button type="submit">Remove Member</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
         </div>
 
     {% else %}
