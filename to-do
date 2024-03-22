@@ -1,8 +1,6 @@
 to do:
 
 =========================
-- plus button 'record_log' (add activity to current Log, create default if necessary) 
-=========================
 - user-defined goals (kcal, water, sleep, total_duration)
 =========================
 - pop-up suggestions (in order to complete daily milestones. for ex, "drink some water!", "do some jogging!", "eat something!")

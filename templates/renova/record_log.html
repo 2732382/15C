@@ -5,10 +5,6 @@
 Record Log
 {% endblock %}
 
-{% block js %}
-<script src="{% static 'javascript/record_log.js' %}"></script>
-{% endblock %}
-
 {% block content %}
 <div class="forms-container">
     <form method="post" class="log-form">
@@ -34,6 +30,13 @@ Record Log
     <form method="post" class="activity-form">
         {% csrf_token %}
         <input type="hidden" name="form_name" value="activity_form">
+
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+        
         <div class="activity-form">
             <label for="id_name">Activity Name:</label>
             <input id="id_name" type="text" name="name" />
