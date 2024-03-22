@@ -9,9 +9,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* Add a dark background color */
+   
     background: linear-gradient(to top, #1a0033, #011627);
-    /* Use a light color for text */
+ 
     color: #FDFFFC;
 }
 
@@ -53,17 +53,17 @@ header {
 
 nav ul {
     list-style-type: none;
-    font-size: 1.5vw; /* Adjust as needed */
+    font-size: 1.5vw; 
 }
 
 nav ul li {
     display: inline;
-    margin: 5vw; /* Adjust as needed */
+    margin: 5vw; 
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #FDFFFC; /* Light color for contrast */
+    color: #FDFFFC; 
     font-family: 'Roboto', sans-serif;
 }
 
@@ -124,22 +124,23 @@ main {
 
 .leftalign {
 	float: left;
-    margin-left: 150px;
+    margin-left: 10%;
+    margin-right: 5%;
 }
 
 .rightalign {
     float: right;
-    margin-right: 150px;
-    padding-left: 100px;
+    margin: 0 10%;
+    padding-left: 5%;
 }
 
 #explore-groups {
-    margin-right: 500px;
+    margin-right: 5%;
 }
 
 .container {
     display: flex;
-    justify-content: space-between; /* This will distribute the items evenly across the row */
+    justify-content: nowrap; 
 }
 
 .left, .right {
@@ -157,8 +158,8 @@ footer {
     padding-top: 10px; 
     padding-right: 50px; 
     border-top: 1px solid #ffffff; 
-    background-color: #090313; /* Black color */
-    color: #ffffff; /* White color for contrast */
+    background-color: #090313; 
+    color: #ffffff; 
 }
 
 .columns {
@@ -171,6 +172,18 @@ footer {
     border-left: 1px solid #FDFFFC;
 }
 
+/* Media query for screens smaller than 800px */
+@media screen and (max-width: 800px) {
+    .leftalign {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .rightalign {
+        margin-right: 50px;
+        padding-left: 50px;
+    }
+}
 
 /* LOGIN */
 .login-form {
@@ -233,26 +246,30 @@ footer {
     justify-content: left;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0%;
     padding-left: 0%;
     padding-right: 0%; 
 	border: 1px solid #ccc;
-	width: 55%;
+    width: 50vw;
+    
 }
 
 .team-heading {
     text-align: center;
     margin-bottom: 20px;
 	width: 20%;
+    font-size: 1.5vw; 
 }
 
 .team-member {
+    width: 19%;
     text-align: center;
-    margin: 10px;
+    margin: 5% 0;
+    font-size: 0.75vw; 
 }
 
 .team-member img {
-    width: 90%;
+    width: 5vw; 
     height: auto;
     border-radius: 0%;
 	border: 1px solid #ccc;
@@ -261,58 +278,60 @@ footer {
 
 .team-member .name {
     font-weight: bold;
-    /* Use a lighter color for text */
     color: #ffffff;
 }
 
 .team-member .position {
-    /* Use a lighter color for text */
     color: #cccccc;
 }
 
 .about_us-wrapper {
 	display: flex;
 	justify-content: space-between;
+    height: 15vw;
 }
 
 /* Contact Info */
 .contact-info {
     background-color: #f0f0f0; 
-    padding: 20px;
-    border-radius: 10px;
-    width: 15%; 
+    padding: 1% 2%;
+    border-radius: 10%;
+    width: 13vw; 
+    font-size: 1vw; 
+    margin: 0 2%;
 }
 
 .contact-info h2{
+    margin-bottom: 0;
     color:#000033;
 }
 
 .contact-info p {
-    margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 100%;
     color: #011627;
 }
 
 /* Socials */
 .socials {
     background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 10px;
-    width: 15%;
+    padding: 1% 2%;
+    border-radius: 10%;
+    width: 15vw;
+    font-size: 1vw; 
+    margin-right: 5%;
 }
 
 .socials p {
-    margin-bottom: 10px;
-    font-size: 16px;
     color: #011627;
 }
 
 .socials h2{
+    margin-bottom: 0;
     color:#000033;
 }
 
 .socials i {
-    margin-right: 8px; 
+    margin-right: 3%; 
     color: #000033; 
 }
 
@@ -323,7 +342,6 @@ footer {
 
 #contact-socials {
     color:#011627;
-    margin-left: 20px;
 }
 
 /* MyLogs */
@@ -366,9 +384,9 @@ footer {
 }
 
 .dial-label {
-    margin-bottom: 10px; /* Adjust as needed */
+    margin-bottom: 10px;
     text-align: center;
-    font-size: 14px; /* Adjust as needed */
+    font-size: 14px; 
 }
 
 .dial::before {
@@ -395,7 +413,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 14px; /* Adjust as needed */
+    font-size: 14px; 
 }
 
 /* Individual dial backgrounds */
@@ -426,11 +444,12 @@ footer {
     justify-content: space-between;
     width: 100%; 
     margin-bottom: 10px; 
+    background-color: #8b8b8b62;
 }
 
 .activity-name, .activity-duration {
     flex-basis: 48%; 
-    margin: 0 10px; 
+    margin: 0 20px; 
     background-color: white; 
     padding: 10px; 
     border: 1px solid #878484; 
@@ -536,6 +555,7 @@ footer {
     font-size: 1.2em;
     color: #333;
     margin: 0 50px;
+    margin-bottom: 50px;
 }
 
 
@@ -570,7 +590,7 @@ footer {
     border-radius: 5px;
 }
 
-.comment-section form button {
+.submit-comment {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -579,18 +599,33 @@ footer {
     cursor: pointer;
 }
 
-.comment-section form button:hover {
+.submit-button:hover {
     background-color: #45a049;
+}
+
+/* CSS for the delete comment button */
+.delete-comment {
+    background-color: #f44336; 
+    color: white; 
+    width: auto; 
+    padding: 10px 20px; 
+    margin: 10px 0; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.delete-comment:hover {
+    background-color: #d32f2f; 
 }
 
 
 /* make a log page adjustments */
 .smallercont {
     /* Other styles... */
-    width: 50%; /* Adjust width as needed */
-    margin: auto; /* Centers the element if within another container */
-    text-align: center; /* Center-aligns text within the element */
-    color: white; /* Changes text color to white */
+    width: 50%; 
+    margin: auto; 
+    text-align: center; 
+    color: white; 
 }
 
 .smallercont a {
@@ -618,20 +653,20 @@ footer {
 
 .forms-container {
     display: flex;
-    justify-content: space-between; /* This will position the children with space between */
+    flex-direction: column-reverse;
+    align-items: flex-start;
     padding: 20px;
 }
 
 .log-form {
-    width: 40%; 
-    flex: 1; 
-    margin: 10px;    
-    margin-right: 20px; /* Adds some space between the forms */
+    border-radius: 5%;
 }
 
-.activity-form {
-    width:30%; 
-    margin: 5px;
+.log-form, .activity-form {
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 10px; 
+    margin-bottom: 20px;
 }
 
 /*login form*/
@@ -641,7 +676,7 @@ footer {
     padding: 20px;
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-    width: 50%; 
+    width: 500px; 
     margin: 0 auto; 
 }
 
@@ -683,7 +718,7 @@ input[type="submit"] {
     padding: 20px;
     border-radius: 15px;
     border-color: #eeeef4;
-    width: 50%; 
+    width: 500px; 
     margin: 0 auto; 
 }
 
@@ -695,7 +730,7 @@ input[type="submit"] {
 
 .activity-form input[type="text"],
 .activity-form input[type="number"] {
-    width: 30%; /* Makes the input take the full width of the form */
+    width: 30%; 
     padding: 10px;
     margin-bottom: 10px; 
     margin-top: 5px;
@@ -770,4 +805,60 @@ a.delete-account:hover {
 
 .comment-text {
     margin-left: 40px;
+}
+
+
+/* ANIMATED MESSAGES */
+@keyframes colorChange {
+    0% {color: #ff6347;} /* Vibrant color at the start */
+    100% {color: #696969;} /* Saturated color at the end */
+}
+
+.alert {
+    animation-name: colorChange;
+    animation-duration: 3s; 
+    animation-fill-mode: forwards;
+}
+
+
+/* REMOVING GROUP MEMBERS */
+/* CSS */
+.member-section {
+    color: #011627;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px;
+    padding: 10px;
+    background-color: #fff; /* White background */
+    border: 1px solid #dee2e6; /* Grey border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.member p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.member form {
+    margin: 0; /* Remove default form margin */
+}
+
+.member form button {
+    padding: 5px 10px;
+    background-color: #dc3545; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.member form button:hover {
+    background-color: #c82333; /* Darken the background color on hover */
 }

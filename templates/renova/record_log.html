@@ -5,36 +5,45 @@
 Record Log
 {% endblock %}
 
-{% block js %}
-<script src="{% static 'javascript/record_log.js' %}"></script>
-{% endblock %}
-
 {% block content %}
 <div class="forms-container">
     <form method="post" class="log-form">
         {% csrf_token %}
+        <input type="hidden" name="form_name" value="log_form">
         <div class="login-form">
             <div class="form-field">
-                <label for="id_calories">Calories(kcal):</label>
-                <input id="id_calories" type="number" value=0 name="calories" />
+                <label for="id_calories">Calories (kcal):</label>
+                <input id="id_calories" type="number" value="0" name="calories" />
             </div>
             <div class="form-field">
-                <label for="id_water">Water(ml):</label>
-                <input id="id_water" type="number" value=0 name="water" />
+                <label for="id_water">Water (ml):</label>
+                <input id="id_water" type="number" value="0" name="water" />
             </div>
             <div class="form-field">
-                <label for="id_sleep">Sleep(hours):</label>
-                <input id="id_sleep" type="number"  value=0 name="sleep" />
+                <label for="id_sleep">Sleep (hours):</label>
+                <input id="id_sleep" type="number" value="0" name="sleep" />
             </div>
             <input type="submit" value="Add Log">
         </div>
+    </form>
 
-        <div class="activity-form">
-            <label for="activity_name">Activity Name:</label>
-            <input id="activity_name" type="text" name="activity_name" />
+    <form method="post" class="activity-form">
+        {% csrf_token %}
+        <input type="hidden" name="form_name" value="activity_form">
+
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+        
+        <div>
+            <label for="id_name">Activity Name:</label>
+            <input id="id_name" type="text" name="name" />
     
-            <label for="activity_duration">Duration(minutes):</label>
-            <input id="activity_duration" type="number" name="activity_duration" />
+            <label for="id_duration">Duration (minutes):</label>
+            <input id="id_duration" type="number" name="duration" />
+            <input type="submit" value="Add Activity">
         </div>
     </form>
 </div>

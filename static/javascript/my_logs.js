@@ -1,11 +1,21 @@
 $(document).ready(function() {
 
-    var percent_calories = 100*(total_calories/target_calories)
-    var percent_water = 100*(total_water/target_water)
-    var percent_sleep = 100*(total_sleep/target_sleep)
-    var percent_duration = 100*(total_duration/target_duration)
+    function clamp(x) {
+        if (x<0) {
+            return 0;
+        } else if (x>100) {
+            return 100;
+        } else {
+            return x;
+        }
+    }
 
-    var average = (percent_calories+percent_water+percent_sleep+percent_duration)/4
+    var percent_calories = clamp(100*(total_calories/target_calories));
+    var percent_water = clamp(100*(total_water/target_water));
+    var percent_sleep = clamp(100*(total_sleep/target_sleep));
+    var percent_duration = clamp(100*(total_duration/target_duration));
+
+    var average = ((percent_calories+percent_water+percent_sleep+percent_duration)/4) | 0;
 
     $("#calorie-dial").css({
         background: "conic-gradient(red 0%, rgb(255, 123, 0) "+percent_calories+"%, transparent "+percent_calories+"%, lightgrey 100%)",

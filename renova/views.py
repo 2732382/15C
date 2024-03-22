@@ -4,10 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from renova.models import *
 from renova.forms import *
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.contrib import messages
-from django.db.models import Count
-from django.db.models import Prefetch
+from django.db.models import Count, Prefetch
 
 
 def index(request):
@@ -106,31 +105,43 @@ def my_logs(request):
 
 @login_required
 def record_log(request):
-    activity_form = ActivityForm()  # Initialize activity_form here
+    activity_form = ActivityForm(request.POST or None)
+    log_form = LogForm(request.POST or None, initial={'water': 0, 'calories': 0, 'sleep': 0})
+    
     if request.method == 'POST':
-        log_form = LogForm(request.POST)
-        if log_form.is_valid():
+        form_name = request.POST.get('form_name')
+        if form_name == 'activity_form':
+            if activity_form.is_valid():
+                # Don't save the activity yet, just store the form data in the session
+                activity_data = activity_form.cleaned_data
+                activities = request.session.get('activities', [])
+                activities.append(activity_data)
+                request.session['activities'] = activities
+                
+                activity_form = ActivityForm()  # Clear the form
+                messages.success(request, "Activity added! Save with 'Add Log' when done.")
+            else:
+                messages.error(request, 'Please fill in both fields: name and duration.')
+        elif form_name == 'log_form' and log_form.is_valid():
+            # Create a new log
             log = log_form.save(commit=False)
             log.user = request.user
             log.creation_date = timezone.now()
+            log.save()  # Save the log before adding activities
+            
+            # Add the activities from the session to the log
+            activities = request.session.get('activities', [])
+            for activity_data in activities:
+                activity = Activity(log=log, **activity_data)
+                activity.save()
+                log.total_duration += activity.duration
 
-            # If any data was entered for the activity, process the activity form
-            if request.POST.get('activity_name') != "" or request.POST.get('activity_duration') != "":
-                activity_form = ActivityForm(request.POST)
-                if activity_form.is_valid():
-                    activity = activity_form.save(commit=False)
-                    log.total_duration += activity.duration
-                    activity.save()
-                    log.activities.add(activity)
-                else:
-                    messages.error(request, 'Activity form invalid.')
-
-            log.save()
+            log.save()  # Save the log after adding activities
+            request.session['activities'] = []  # Clear the activities
             return redirect(reverse('renova:my_logs'))
-    else:
-        log_form = LogForm(initial={'water': 0, 'calories': 0, 'sleep': 0})
 
     return render(request, 'renova/record_log.html', {'log_form': log_form, 'activity_form': activity_form})
+
 
 @login_required
 def my_account(request):
@@ -217,6 +228,25 @@ def group(request, group_name_slug=None):
     else:
         # Handle the case where group_name_slug is not provided
         return HttpResponse("Group not found")
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.user != comment.group.admin:
+        return HttpResponseForbidden()
+    comment.delete()
+    return redirect('renova:group', group_name_slug=comment.group.slug)
+
+
+@login_required
+def remove_member(request, group_slug, username):
+    group = get_object_or_404(Group, slug=group_slug)
+    user = get_object_or_404(User, username=username)
+    if request.user != group.admin:
+        return HttpResponseForbidden()
+    group.remove_member(user)
+    return redirect('renova:group', group_name_slug=group.slug)
 
 
 @login_required
