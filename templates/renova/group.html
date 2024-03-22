@@ -35,14 +35,16 @@
                     <div class="member-section">
                         <h2>Members</h2>
                         {% for member in group.members.all %}
-                            <div class="member">
-                                <!-- Display member information -->
-                                <p>{{ member.username }}</p>
-                                <form method="post" action="{% url 'renova:remove_member' group.slug member.username %}">
-                                    {% csrf_token %}
-                                    <button type="submit">Remove Member</button>
-                                </form>
-                            </div>
+                            {% if member != group.admin %}
+                                <div class="member">
+                                    <!-- Display member information -->
+                                    <p>{{ member.username }}</p>
+                                    <form method="post" action="{% url 'renova:remove_member' group.slug member.username %}">
+                                        {% csrf_token %}
+                                        <button type="submit">Remove Member</button>
+                                    </form>
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 {% endif %}
