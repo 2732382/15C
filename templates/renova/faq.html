@@ -5,6 +5,10 @@
 FAQ
 {% endblock %}
 
+{% block js %}
+<script src="{% static 'javascript/faq.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="middle columns">
 	<h1>FAQ</h1> 
@@ -20,26 +24,21 @@ FAQ
         </select>
     </div>
 
+    <div id="faq-response"></div>
+
 </div>
 
 <div class="leftalign columns">
     <h2>Popular Questions</h2>
-    {% if popular_questions %}
-        <ol>
-        {% for question in popular_questions %}
-            <li>{{ question }}</li>
-        {% endfor %}
-        </ol>
-    {% else %}
+
     <div class="faq-questions">
         <ul>
             <li><strong>How do I reset my password if I've forgotten it?</strong></li>
-            <li><strong>Can I access this service on my mobile device?</strong></li>
-            <li><strong>Is there a way to export my data from your platform?</strong></li>
-            <li><strong>Who do I contact for technical support or assistance?</strong></li>
+            <li><strong>How can I view my activities?</strong></li>
+            <li><strong>What kind of activities can I log?</strong></li>
+            <li><strong>How can I remove my account?</strong></li>
         </ul>
     </div>
-    {% endif %}
 </div>
 
 <div class="rightalign columns">
