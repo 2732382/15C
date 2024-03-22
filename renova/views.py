@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from renova.models import *
 from renova.forms import *
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFound
 from django.contrib import messages
 from django.db.models import Count, Prefetch
 
@@ -291,3 +291,25 @@ def join_group(request, group_name_slug):
         return redirect(reverse('renova:group', kwargs={'group_name_slug': group.slug}))
     except Group.DoesNotExist:
         return HttpResponse("Group not found")
+
+
+@login_required
+def edit_group_attributes(request, group_slug):
+    try:
+        group = Group.objects.get(slug=group_slug)
+    except Group.DoesNotExist:
+        # Handle the case where the group does not exist
+        return redirect('renova:group_not_found')
+
+    if request.user == group.admin:
+        if request.method == 'POST':
+            form = GroupEditForm(request.POST, instance=group)
+            if form.is_valid():
+                form.save()
+                return redirect('renova:group', group_name_slug=group_slug)
+        else:
+            form = GroupEditForm(instance=group)
+        return render(request, 'renova/edit_group.html', {'form': form, 'group': group})
+    else:
+        # Handle the case where the user is not authorized to edit the group
+        return redirect('renova:group', group_name_slug=group_slug)

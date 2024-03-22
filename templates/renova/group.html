@@ -47,6 +47,10 @@
                             {% endif %}
                         {% endfor %}
                     </div>
+                    <div class="columns">
+                        <a href="{% url 'renova:edit_group_attributes' group.slug %}">Edit Group attributes</a>
+
+                    </div>
                 {% endif %}
             </div>
 

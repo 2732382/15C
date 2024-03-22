@@ -5,15 +5,3 @@ to do:
 =========================
 - pop-up suggestions (in order to complete daily milestones. for ex, "drink some water!", "do some jogging!", "eat something!")
 - call pop-ups when user is behind on a metric given time left in day (OPTIONAL EXTRA)
-
-
-IMPORTANT!
-=========================
-- populating FAQ dropbox with helpful responses aligned with query
-- fix 'Popular Questions' to display based on views on a question
-=========================
-- admin to be able to update a group's fields
-=========================
-- save/discard changes of 'my_account'
-=========================
-- add scroll-list of all groups created
