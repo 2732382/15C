@@ -31,10 +31,12 @@ def populate():
 
     comments = {
         'Running group': [
+            {"user":first_admin, "text": "Look I have a special admin role."},
             {"user":RB_user, "text":"I love running"},
             {"user":OG_user, "text":"Example comment"}
         ],
         'Climbing group': [
+            {"user":first_admin, "text": "I'm the climbing admin."},
             {"user":YG_user, "text":"I love climbing"},
             {"user":OG_user, "text":"Another example comment"}
         ],
