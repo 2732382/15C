@@ -146,22 +146,24 @@ def record_log(request):
 
 @login_required
 def my_account(request):
-
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
     if created:
-        
         user_profile.picture = 'profile_images/default.jpg'
         user_profile.save()
+        if request.method == 'GET':
+            return redirect('renova:index')  # Redirect to index after UserProfile creation
 
     if request.method == 'POST':
         user_profile_form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
         if user_profile_form.is_valid():
             user_profile_form.save()
+            return redirect('renova:my_logs')  # Redirect to my_logs after form submission
             
     else:
         user_profile_form = UserProfileForm(instance=request.user.userprofile)
 
     return render(request, 'renova/my_account.html', {'user_profile_form': user_profile_form})
+
 
 
 @login_required
