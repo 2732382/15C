@@ -14,6 +14,17 @@ Groups
     <div class="columns">
         <section class="leftalign">
             <h2>Explore Groups</h2> 
+
+            <!-- Search box -->
+            <input type="text" id="groupSearch" onkeyup="filterGroups()" placeholder="Search for groups..">
+
+            <!-- Scrollable div with links to all groups -->
+            <div id="groupList" style="height:300px;overflow:auto;">
+                {% for group in all_groups %}
+                    <a href="{% url 'renova:group' group.slug %}">{{ group.name }}</a><br>
+                {% endfor %}
+            </div>
+
             <h3>Most Popular</h3>
             {% if popular_groups %}
                 <ol>
@@ -35,7 +46,7 @@ Groups
             {% else %}
                 <strong>There are no new groups present.</strong>
             {% endif %}
-        <section>
+        </section>
     </div>
 
     <section id="explore-groups" class="rightalign leftline">
@@ -43,6 +54,12 @@ Groups
             <h2><a href="{% url 'renova:make_group' %}">Make A Group</a></h2> 
             <p>{{ make_group_summary|safe }}</p>  
         </div>
-    <section>
+    </section>
 </div>
+
+<!-- JavaScript to filter groups -->
+{% block js %}
+<script src="{% static 'javascript/filter_groups.js' %}"></script>
+{% endblock %}
+
 {% endblock %}
