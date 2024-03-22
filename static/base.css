@@ -544,6 +544,7 @@ footer {
     font-size: 1.2em;
     color: #333;
     margin: 0 50px;
+    margin-bottom: 50px;
 }
 
 
@@ -806,4 +807,47 @@ a.delete-account:hover {
     animation-name: colorChange;
     animation-duration: 3s; 
     animation-fill-mode: forwards;
+}
+
+
+/* REMOVING GROUP MEMBERS */
+/* CSS */
+.member-section {
+    color: #011627;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px;
+    padding: 10px;
+    background-color: #fff; /* White background */
+    border: 1px solid #dee2e6; /* Grey border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.member p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.member form {
+    margin: 0; /* Remove default form margin */
+}
+
+.member form button {
+    padding: 5px 10px;
+    background-color: #dc3545; /* Red background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.member form button:hover {
+    background-color: #c82333; /* Darken the background color on hover */
 }
