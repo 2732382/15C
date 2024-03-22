@@ -5,3 +5,15 @@ to do:
 =========================
 - pop-up suggestions (in order to complete daily milestones. for ex, "drink some water!", "do some jogging!", "eat something!")
 - call pop-ups when user is behind on a metric given time left in day (OPTIONAL EXTRA)
+<<<<<<< HEAD
+=======
+
+
+IMPORTANT!
+=========================
+- fix 'Popular Questions' to display based on views on a question
+=========================
+- admin to be able to update a group's fields
+=========================
+- save/discard changes of 'my_account's
+>>>>>>> b6a0ca6b3bfd681a73eab6c466400890f1577bdd

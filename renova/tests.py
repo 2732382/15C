@@ -36,11 +36,13 @@ class LoadViewTestsNoLogin(TestCase):
 class LoadViewTestsLogin(TestCase):
 
     def setUp(self):
-        example_user = User.objects.get_or_create(username='exampleuser')[0]
-        example_user.set_password('12345')
-        example_user.save()
+        self.example_user = User.objects.create_user(username='exampleuser',
+                                                     password="12345")
+        self.example_user.save()
+        self.example_profile = UserProfile.objects.get_or_create(user=self.example_user)[0]
+        self.example_profile.save()
 
-        self.client.force_login(example_user)
+        self.client.force_login(self.example_user)
     
     def test_my_logs_view_no_login(self):
         response = self.client.get(reverse('renova:my_logs'))
@@ -91,9 +93,11 @@ class GroupsViewTests(TestCase):
 class MyLogsViewTests(TestCase):
 
     def setUp(self):
-        self.example_user = User.objects.get_or_create(username='exampleuser')[0]
-        self.example_user.set_password('12345')
+        self.example_user = User.objects.create_user(username='exampleuser',
+                                                     password="12345")
         self.example_user.save()
+        self.example_profile = UserProfile.objects.get_or_create(user=self.example_user)[0]
+        self.example_profile.save()
 
         self.client.force_login(self.example_user)
 
@@ -119,9 +123,11 @@ class MyLogsViewTests(TestCase):
 class IndividualGroupViewTests(TestCase):
 
     def setUp(self):
-        self.example_user = User.objects.get_or_create(username='exampleuser')[0]
-        self.example_user.set_password('12345')
+        self.example_user = User.objects.create_user(username='exampleuser',
+                                                     password="12345")
         self.example_user.save()
+        self.example_profile = UserProfile.objects.get_or_create(user=self.example_user)[0]
+        self.example_profile.save()
 
         self.client.force_login(self.example_user)
 
@@ -155,9 +161,11 @@ class IndividualGroupViewTests(TestCase):
         
     def test_individual_group_view_member(self):
         self.client.logout()
-        example_member = User.objects.get_or_create(username='examplemember')[0]
-        example_member.set_password('12345')
+        example_member = User.objects.create_user(username='examplemember',
+                                                  password="12345")
         example_member.save()
+        example_profile = UserProfile.objects.get_or_create(user=example_member)[0]
+        example_profile.save()
 
         self.client.force_login(example_member)
 
