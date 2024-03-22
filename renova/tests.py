@@ -150,7 +150,8 @@ class IndividualGroupViewTests(TestCase):
         response = self.client.get(reverse('renova:group', args = [group_name_slug]))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "test comment - exampleuser (Admin)")
+        self.assertContains(response, "test comment")
+        self.assertContains(response, "<strong>exampleuser</strong> (Admin)")
         
     def test_individual_group_view_member(self):
         self.client.logout()
