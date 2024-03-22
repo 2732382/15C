@@ -56,6 +56,15 @@ def populate():
         ],
     }
 
+    logs = [
+        {"user":first_admin,
+         "water":2000,
+         "calories":1200,
+         "sleep":6,
+         "activities":{"running":10,
+                       "climbing":20}}
+    ]
+
     for group,group_data in groups.items():
         g = Group.objects.get_or_create(name=group,
                                         admin=group_data["admin"],
@@ -68,15 +77,24 @@ def populate():
         
 
         for comment in comments[group]:
-            c =Comment.objects.get_or_create(group=g,
+            c = Comment.objects.get_or_create(group=g,
                                              user=comment["user"],
                                              text=comment["text"])[0]
             c.save()
         
+    for log in logs:
+        l = Log.objects.get_or_create(user = log["user"],
+                                        water = log["water"],
+                                        calories = log["calories"],
+                                        sleep = log["sleep"])[0]
+        l.save()
 
-    
+        for name,duration in log["activities"].items():
+            a = Activity.objects.get_or_create(name=name,
+                                               duration=duration,
+                                               log = l)[0]
+            a.save()
 
-# Start execution here!
 if __name__ == '__main__':
     print('Starting Renova population script...')
     populate()
