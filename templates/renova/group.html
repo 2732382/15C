@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <div class="comment-section rightalign leftline">
+            <div class="comment-section columns rightalign leftline">
                 <b><div class="leftalign">Comments</div></b>
 
                 {% for comment in group.comments.all %}
@@ -46,6 +46,12 @@
                         <div class="comment-text">
                             {{ comment.text }}
                         </div>
+                        {% if request.user == group.admin %}
+                            <form method="post" action="{% url 'renova:delete_comment' comment.id %}">
+                                {% csrf_token %}
+                                <button type="submit">Delete Comment</button>
+                            </form>
+                        {% endif %}
                     </div>
                 {% endfor %}
 

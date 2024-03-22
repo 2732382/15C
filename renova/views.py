@@ -4,10 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from renova.models import *
 from renova.forms import *
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.contrib import messages
-from django.db.models import Count
-from django.db.models import Prefetch
+from django.db.models import Count, Prefetch
 
 
 def index(request):
@@ -218,6 +217,15 @@ def group(request, group_name_slug=None):
     else:
         # Handle the case where group_name_slug is not provided
         return HttpResponse("Group not found")
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.user != comment.group.admin:
+        return HttpResponseForbidden()
+    comment.delete()
+    return redirect('renova:group', group_name_slug=comment.group.slug)
 
 
 @login_required
