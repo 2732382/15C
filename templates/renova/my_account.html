@@ -10,6 +10,7 @@ My Account
 	<div class="login-form columns">
 		<h1>My Account</h1> 
 		<img class="profile-pic profile-pic-rounded" src="{{ request.user.userprofile.picture.url|default:'media/profile_images/default.jpg' }}" width="100" height="100">
+		
 		<form action="{% url 'registration_register' %}" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			<label for="username">Username:</label>
@@ -20,8 +21,32 @@ My Account
 			<input type="password" id="password" name="password"><br>
 				<form action="" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
+
+					
+
+					<form action="{% url 'renova:my_account' %}" method="post" enctype="multipart/form-data">
+
+						<label for="id_goal_calories">Goal Calories (kcal):</label>
+						<input type="number" id="target_calories" name="target_calories" value="{{ request.user.userprofile.target_calories }}"><br>
+
+						<label for="id_goal_water">Goal Water (ml):</label>
+						<input type="number" id="target_water" name="target_water" value="{{ request.user.userprofile.target_water }}"><br>
+
+						<label for="id_goal_sleep">Goal Sleep (hours):</label>
+						<input type="number" id="target_sleep" name="target_sleep" value="{{ request.user.userprofile.target_sleep }}"><br>
+
+						<label for="id_goal_active_duration">Goal Active Duration (minutes):</label>
+						<input type="number" id="target_duration" name="target_duration" value="{{ request.user.userprofile.target_duration }}"><br>
+						
+						
+						<input type="submit" value="Update Targets">
+
+					</form>
+					
 					{{ user_profile_form.as_p }}
+					
 					<input type="submit" value="Save Profile Picture">
+					
 				</form>
 			<input type="submit" value="Save Changes">
 			<input type="submit" value="Discard Changes">
