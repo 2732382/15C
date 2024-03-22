@@ -1,12 +1,17 @@
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseForbidden
+from django.contrib import messages
+from django.db.models import Count
+from django.db.models import Sum
+
+from registration.views import RegistrationView
+
 from renova.models import *
 from renova.forms import *
-from django.urls import reverse
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFound
-from django.contrib import messages
-from django.db.models import Count, Prefetch
+
 
 
 def index(request):
@@ -32,10 +37,8 @@ def index(request):
     
     return render(request, 'renova/index.html', context=context_dict)
 
-
 def faq(request):
     return render(request, 'renova/faq.html')
-
 
 def about_us(request):
     context_dict = {}
@@ -69,8 +72,6 @@ def about_us(request):
     context_dict['twitter'] = "twitter.com/renova"
 
     return render(request, 'renova/about_us.html', context=context_dict)
-
-from django.db.models import Sum, Avg
 
 @login_required
 def my_logs(request):

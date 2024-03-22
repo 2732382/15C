@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    picture = models.ImageField(upload_to='profile_images', blank = True, default='media/profile_images/default.jpg')
+    picture = models.ImageField(upload_to='profile_images', blank = True, default='profile_images/default.jpg')
 
     target_calories = models.IntegerField(default=2000)
     target_water = models.IntegerField(default=2500)  # milliliters
