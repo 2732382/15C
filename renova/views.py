@@ -82,12 +82,23 @@ def my_logs(request):
     total_sleep = today_logs.aggregate(Sum('sleep'))['sleep__sum'] or 0
     total_duration = today_logs.aggregate(total_duration=Sum('total_duration'))['total_duration'] or 0
 
+    # Get the goals from the user's profile
+    user_profile = UserProfile.objects.get(user=request.user)
+    target_calories = user_profile.target_calories
+    target_water = user_profile.target_water
+    target_sleep = user_profile.target_sleep
+    target_duration = user_profile.target_duration
+
     context_dict = {
         'logs' : logs,
         'total_water': total_water,
         'total_calories': total_calories,
         'total_sleep': total_sleep,
         'total_duration': total_duration,
+        'target_calories': target_calories,
+        'target_water': target_water,
+        'target_sleep': target_sleep,
+        'target_duration': target_duration,
     }
 
     return render(request, 'renova/my_logs.html', context=context_dict)

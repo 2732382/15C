@@ -8,6 +8,11 @@ class UserProfile(models.Model):
 
     picture = models.ImageField(upload_to='profile_images', blank = True, default='media/profile_images/default.jpg')
 
+    target_calories = models.IntegerField(default=2000)
+    target_water = models.IntegerField(default=2500)  # milliliters
+    target_sleep = models.IntegerField(default=8)  # hours
+    target_duration = models.IntegerField(default=60)  # minutes
+
     def __str__(self):
         return self.user.username
 
